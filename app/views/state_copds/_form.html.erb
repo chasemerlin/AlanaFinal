@@ -1,0 +1,41 @@
+<%= form_for(@state_copd) do |f| %>
+  <% if @state_copd.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@state_copd.errors.count, "error") %> prohibited this state_copd from being saved:</h2>
+
+      <ul>
+      <% @state_copd.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :respondents %><br>
+    <%= f.number_field :respondents %>
+  </div>
+  <div class="field">
+    <%= f.label :has_copd %><br>
+    <%= f.number_field :has_copd %>
+  </div>
+  <div class="field">
+    <%= f.label :percentage %><br>
+    <%= f.text_field :percentage %>
+  </div>
+  <div class="field">
+    <%= f.label :ninety_five_percent_confidence_interval %><br>
+    <%= f.text_field :ninety_five_percent_confidence_interval %>
+  </div>
+  <div class="field">
+    <%= f.label :abbreviation %><br>
+    <%= f.text_field :abbreviation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

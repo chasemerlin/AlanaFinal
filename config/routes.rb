@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :state_copds
+
   resources :zip_msas
 
   resources :hospital_generals

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412175550) do
+ActiveRecord::Schema.define(version: 20150412182141) do
 
   create_table "hospital_generals", force: :cascade do |t|
     t.string   "provider_id"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20150412175550) do
     t.string   "emergency"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "state_copds", force: :cascade do |t|
+    t.string   "state"
+    t.integer  "respondents"
+    t.integer  "has_copd"
+    t.float    "percentage"
+    t.string   "ninety_five_percent_confidence_interval"
+    t.string   "abbreviation"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   create_table "zip_msas", force: :cascade do |t|

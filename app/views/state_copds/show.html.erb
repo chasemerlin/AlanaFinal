@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>State:</strong>
+  <%= @state_copd.state %>
+</p>
+
+<p>
+  <strong>Respondents:</strong>
+  <%= @state_copd.respondents %>
+</p>
+
+<p>
+  <strong>Has copd:</strong>
+  <%= @state_copd.has_copd %>
+</p>
+
+<p>
+  <strong>Percentage:</strong>
+  <%= @state_copd.percentage %>
+</p>
+
+<p>
+  <strong>Ninety five percent confidence interval:</strong>
+  <%= @state_copd.ninety_five_percent_confidence_interval %>
+</p>
+
+<p>
+  <strong>Abbreviation:</strong>
+  <%= @state_copd.abbreviation %>
+</p>
+
+<%= link_to 'Edit', edit_state_copd_path(@state_copd) %> |
+<%= link_to 'Back', state_copds_path %>
