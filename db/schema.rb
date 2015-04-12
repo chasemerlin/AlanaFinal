@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412182141) do
+ActiveRecord::Schema.define(version: 20150412184144) do
+
+  create_table "hospital_bedsizes", force: :cascade do |t|
+    t.string   "hospital_name"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "staffed_beds"
+    t.integer  "total_discharges"
+    t.integer  "patient_days"
+    t.integer  "gross_patient_revenue"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "hospital_generals", force: :cascade do |t|
     t.string   "provider_id"

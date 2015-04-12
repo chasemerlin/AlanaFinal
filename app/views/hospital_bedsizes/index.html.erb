@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Hospital Bedsizes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hospital name</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Staffed beds</th>
+      <th>Total discharges</th>
+      <th>Patient days</th>
+      <th>Gross patient revenue</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hospital_bedsizes.each do |hospital_bedsize| %>
+      <tr>
+        <td><%= hospital_bedsize.hospital_name %></td>
+        <td><%= hospital_bedsize.city %></td>
+        <td><%= hospital_bedsize.state %></td>
+        <td><%= hospital_bedsize.staffed_beds %></td>
+        <td><%= hospital_bedsize.total_discharges %></td>
+        <td><%= hospital_bedsize.patient_days %></td>
+        <td><%= hospital_bedsize.gross_patient_revenue %></td>
+        <td><%= link_to 'Show', hospital_bedsize %></td>
+        <td><%= link_to 'Edit', edit_hospital_bedsize_path(hospital_bedsize) %></td>
+        <td><%= link_to 'Destroy', hospital_bedsize, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hospital bedsize', new_hospital_bedsize_path %>

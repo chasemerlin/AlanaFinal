@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hospital_name: MyString
+  city: MyString
+  state: MyString
+  staffed_beds: 1
+  total_discharges: 1
+  patient_days: 1
+  gross_patient_revenue: 1
+
+two:
+  hospital_name: MyString
+  city: MyString
+  state: MyString
+  staffed_beds: 1
+  total_discharges: 1
+  patient_days: 1
+  gross_patient_revenue: 1

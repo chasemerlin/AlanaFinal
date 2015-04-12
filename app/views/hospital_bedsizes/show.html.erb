@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hospital name:</strong>
+  <%= @hospital_bedsize.hospital_name %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @hospital_bedsize.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @hospital_bedsize.state %>
+</p>
+
+<p>
+  <strong>Staffed beds:</strong>
+  <%= @hospital_bedsize.staffed_beds %>
+</p>
+
+<p>
+  <strong>Total discharges:</strong>
+  <%= @hospital_bedsize.total_discharges %>
+</p>
+
+<p>
+  <strong>Patient days:</strong>
+  <%= @hospital_bedsize.patient_days %>
+</p>
+
+<p>
+  <strong>Gross patient revenue:</strong>
+  <%= @hospital_bedsize.gross_patient_revenue %>
+</p>
+
+<%= link_to 'Edit', edit_hospital_bedsize_path(@hospital_bedsize) %> |
+<%= link_to 'Back', hospital_bedsizes_path %>
