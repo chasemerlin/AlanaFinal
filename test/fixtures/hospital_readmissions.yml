@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  provider_id: MyString
+  hospital_name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip_code: MyString
+  county_name: MyString
+  phone_number: MyString
+  measure_name: MyString
+  measure_id: MyString
+  compared_to_national: MyString
+  denominator: 1
+  score: 1.5
+  lower_estimate: 1.5
+  higher_estimate: 1.5
+  footnote: MyString
+  measure_start_date: MyString
+  measure_end_date: MyString
+
+two:
+  provider_id: MyString
+  hospital_name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip_code: MyString
+  county_name: MyString
+  phone_number: MyString
+  measure_name: MyString
+  measure_id: MyString
+  compared_to_national: MyString
+  denominator: 1
+  score: 1.5
+  lower_estimate: 1.5
+  higher_estimate: 1.5
+  footnote: MyString
+  measure_start_date: MyString
+  measure_end_date: MyString

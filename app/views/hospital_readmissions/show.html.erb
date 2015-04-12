@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @hospital_readmission.provider_id %>
+</p>
+
+<p>
+  <strong>Hospital name:</strong>
+  <%= @hospital_readmission.hospital_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @hospital_readmission.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @hospital_readmission.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @hospital_readmission.state %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @hospital_readmission.zip_code %>
+</p>
+
+<p>
+  <strong>County name:</strong>
+  <%= @hospital_readmission.county_name %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @hospital_readmission.phone_number %>
+</p>
+
+<p>
+  <strong>Measure name:</strong>
+  <%= @hospital_readmission.measure_name %>
+</p>
+
+<p>
+  <strong>Measure:</strong>
+  <%= @hospital_readmission.measure_id %>
+</p>
+
+<p>
+  <strong>Compared to national:</strong>
+  <%= @hospital_readmission.compared_to_national %>
+</p>
+
+<p>
+  <strong>Denominator:</strong>
+  <%= @hospital_readmission.denominator %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @hospital_readmission.score %>
+</p>
+
+<p>
+  <strong>Lower estimate:</strong>
+  <%= @hospital_readmission.lower_estimate %>
+</p>
+
+<p>
+  <strong>Higher estimate:</strong>
+  <%= @hospital_readmission.higher_estimate %>
+</p>
+
+<p>
+  <strong>Footnote:</strong>
+  <%= @hospital_readmission.footnote %>
+</p>
+
+<p>
+  <strong>Measure start date:</strong>
+  <%= @hospital_readmission.measure_start_date %>
+</p>
+
+<p>
+  <strong>Measure end date:</strong>
+  <%= @hospital_readmission.measure_end_date %>
+</p>
+
+<%= link_to 'Edit', edit_hospital_readmission_path(@hospital_readmission) %> |
+<%= link_to 'Back', hospital_readmissions_path %>
