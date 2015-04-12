@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @hospital_general.provider_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @hospital_general.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @hospital_general.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @hospital_general.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @hospital_general.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @hospital_general.zip %>
+</p>
+
+<p>
+  <strong>County:</strong>
+  <%= @hospital_general.county %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @hospital_general.phone %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @hospital_general.type %>
+</p>
+
+<p>
+  <strong>Ownership:</strong>
+  <%= @hospital_general.ownership %>
+</p>
+
+<p>
+  <strong>Emergency:</strong>
+  <%= @hospital_general.emergency %>
+</p>
+
+<%= link_to 'Edit', edit_hospital_general_path(@hospital_general) %> |
+<%= link_to 'Back', hospital_generals_path %>
