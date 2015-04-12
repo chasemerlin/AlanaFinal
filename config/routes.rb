@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :zip_msas
+
   resources :hospital_generals
 
   # The priority is based upon order of creation: first created -> highest priority.

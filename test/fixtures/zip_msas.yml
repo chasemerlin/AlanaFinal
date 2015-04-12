@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  zip_code: MyString
+  state_abbreviation: MyString
+  msa_number: MyString
+  gpci_one: 1.5
+  gpci_two: 1.5
+  gpci_three: 1.5
+  county_number: MyString
+  msa_name: MyString
+  zip_population: 1
+  msa_population: 1
+
+two:
+  zip_code: MyString
+  state_abbreviation: MyString
+  msa_number: MyString
+  gpci_one: 1.5
+  gpci_two: 1.5
+  gpci_three: 1.5
+  county_number: MyString
+  msa_name: MyString
+  zip_population: 1
+  msa_population: 1

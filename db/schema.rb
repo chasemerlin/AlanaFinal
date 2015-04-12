@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409164647) do
+ActiveRecord::Schema.define(version: 20150412175550) do
 
   create_table "hospital_generals", force: :cascade do |t|
     t.string   "provider_id"
@@ -27,6 +27,21 @@ ActiveRecord::Schema.define(version: 20150409164647) do
     t.string   "emergency"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "zip_msas", force: :cascade do |t|
+    t.string   "zip_code"
+    t.string   "state_abbreviation"
+    t.string   "msa_number"
+    t.float    "gpci_one"
+    t.float    "gpci_two"
+    t.float    "gpci_three"
+    t.string   "county_number"
+    t.string   "msa_name"
+    t.integer  "zip_population"
+    t.integer  "msa_population"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
 end

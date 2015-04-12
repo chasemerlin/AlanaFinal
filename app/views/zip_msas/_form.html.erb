@@ -1,0 +1,57 @@
+<%= form_for(@zip_msa) do |f| %>
+  <% if @zip_msa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@zip_msa.errors.count, "error") %> prohibited this zip_msa from being saved:</h2>
+
+      <ul>
+      <% @zip_msa.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :zip_code %><br>
+    <%= f.text_field :zip_code %>
+  </div>
+  <div class="field">
+    <%= f.label :state_abbreviation %><br>
+    <%= f.text_field :state_abbreviation %>
+  </div>
+  <div class="field">
+    <%= f.label :msa_number %><br>
+    <%= f.text_field :msa_number %>
+  </div>
+  <div class="field">
+    <%= f.label :gpci_one %><br>
+    <%= f.text_field :gpci_one %>
+  </div>
+  <div class="field">
+    <%= f.label :gpci_two %><br>
+    <%= f.text_field :gpci_two %>
+  </div>
+  <div class="field">
+    <%= f.label :gpci_three %><br>
+    <%= f.text_field :gpci_three %>
+  </div>
+  <div class="field">
+    <%= f.label :county_number %><br>
+    <%= f.text_field :county_number %>
+  </div>
+  <div class="field">
+    <%= f.label :msa_name %><br>
+    <%= f.text_field :msa_name %>
+  </div>
+  <div class="field">
+    <%= f.label :zip_population %><br>
+    <%= f.number_field :zip_population %>
+  </div>
+  <div class="field">
+    <%= f.label :msa_population %><br>
+    <%= f.number_field :msa_population %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

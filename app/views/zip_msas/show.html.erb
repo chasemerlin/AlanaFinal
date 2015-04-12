@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @zip_msa.zip_code %>
+</p>
+
+<p>
+  <strong>State abbreviation:</strong>
+  <%= @zip_msa.state_abbreviation %>
+</p>
+
+<p>
+  <strong>Msa number:</strong>
+  <%= @zip_msa.msa_number %>
+</p>
+
+<p>
+  <strong>Gpci one:</strong>
+  <%= @zip_msa.gpci_one %>
+</p>
+
+<p>
+  <strong>Gpci two:</strong>
+  <%= @zip_msa.gpci_two %>
+</p>
+
+<p>
+  <strong>Gpci three:</strong>
+  <%= @zip_msa.gpci_three %>
+</p>
+
+<p>
+  <strong>County number:</strong>
+  <%= @zip_msa.county_number %>
+</p>
+
+<p>
+  <strong>Msa name:</strong>
+  <%= @zip_msa.msa_name %>
+</p>
+
+<p>
+  <strong>Zip population:</strong>
+  <%= @zip_msa.zip_population %>
+</p>
+
+<p>
+  <strong>Msa population:</strong>
+  <%= @zip_msa.msa_population %>
+</p>
+
+<%= link_to 'Edit', edit_zip_msa_path(@zip_msa) %> |
+<%= link_to 'Back', zip_msas_path %>
