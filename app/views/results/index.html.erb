@@ -6,9 +6,6 @@
           <label for="tags" class="">MSA</label>
           <input id="tags" name="tags" class="msa-input">
         </div>
-        <select class="form-control">
-          
-        </select>
         <br>
         <div class="form-group search-button-form">
           <%= submit_tag "Search", class: "btn btn-primary" %>
@@ -19,7 +16,7 @@
   <% if @user_selected_msa %> 
     <div class="row">
       <h4><%= @user_selected_msa %></h4>
-      <p>Projected Market size: <%= @msa_market_size %></p>
+      <p>Projected Market size: <%= @msa_market_size.round(0) %></p>
       <p>Total Number of Hospitals: <%= @hospital_count %></p>
       <p>Total Number of Beds: <%= @beds_count %></p>
     </div>
