@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 well">
-      <%= form_tag(results_search_path, method: 'post', class:'master-search-form') do %>
+      <%= form_tag(results_index_path, method: 'get', class:'master-search-form') do %>
+        <div class="ui-widget form-group">
+          <label for="tags" class="">MSA</label>
+          <input id="tags" name="tags" class="msa-input">
+        </div>
         <select class="form-control">
           
         </select>
@@ -12,41 +16,54 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
-    <h4><%= @user_selected_msa %></h4>
-    <p>Market size: <%= @msa_market_size %></p>
-    <p>Total Number of Hospitals: <%= @hospital_count %></p>
-    <p>Total Number of Beds: <%= @beds_count %></p>
-  </div>
-  <div class="row">
-    <h3>Top Hospitals</h3>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Hospital</th>
-          <th>Address</th>
-          <th>City</th>
-          <th>State</th>
-          <th>Phone</th>
-          <th>Staffed Beds</th>
-          <th>Discharges</th>
-          <th>COPD Readmissions</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @hospitals_with_metrics.first(5).map {|h| h[0] }.each do |hospital| %>
-        <tr>
-          <td><%= hospital.name %></td>
-          <td><%= hospital.address %></td>
-          <td><%= hospital.city %></td>
-          <td><%= hospital.state %></td> 
-          <td><%= hospital.phone %></td>
-          <td><%= hospital.hospital_bedsizes.first.staffed_beds %></td>
-          <td><%= hospital.hospital_bedsizes.first.total_discharges %></td>
-          <td><%= hospital.copd_readmissions %></td> 
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
+  <% if @user_selected_msa %> 
+    <div class="row">
+      <h4><%= @user_selected_msa %></h4>
+      <p>Projected Market size: <%= @msa_market_size %></p>
+      <p>Total Number of Hospitals: <%= @hospital_count %></p>
+      <p>Total Number of Beds: <%= @beds_count %></p>
+    </div>
+    <div class="row">
+      <h3>Top Hospitals</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Hospital</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Phone</th>
+            <th>Staffed Beds</th>
+            <th>Discharges</th>
+            <th>COPD Readmissions</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @hospitals_with_metrics.first(5).map {|h| h[0] }.each_with_index do |hospital,i| %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><%= hospital.name %></td>
+            <td><%= hospital.address %></td>
+            <td><%= hospital.city %></td>
+            <td><%= hospital.state %></td> 
+            <td><%= hospital.phone %></td>
+            <td><%= hospital.hospital_bedsizes.first.staffed_beds %></td>
+            <td><%= hospital.hospital_bedsizes.first.total_discharges %></td>
+            <td><%= hospital.copd_readmissions %></td> 
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>  
 </div>
+<%= javascript_tag do %>
+  window.msas = <%=raw @msas.to_json %>;
+  $(function() {
+    $( "#tags" ).autocomplete({
+      source: msas
+    });
+    
+  });
+<% end %>

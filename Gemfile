@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
 
+gem 'autoprefixer-rails'
+gem 'jquery-ui-rails'
+
 group :development do 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

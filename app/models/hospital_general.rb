@@ -4,9 +4,10 @@ class HospitalGeneral < ActiveRecord::Base
 
   def copd_readmissions
     if hospital_readmissions
-      re = hospital_readmissions.where(measure_id:"READM_30_COPD").first.denominator
-      if re
-        re
+      re = hospital_readmissions.where(measure_id:"READM_30_COPD").first
+      number = re.denominator if re
+      if number
+        number
       else
         0
       end
