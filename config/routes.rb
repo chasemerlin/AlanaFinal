@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'results/index'
+
+  post 'results/search'
+
   resources :hospital_readmissions
 
   resources :hospital_bedsizes

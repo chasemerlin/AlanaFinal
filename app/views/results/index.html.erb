@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 well">
+      <%= form_tag(results_search_path, method: 'post', class:'master-search-form') do %>
+        <select class="form-control">
+          
+        </select>
+        <br>
+        <div class="form-group search-button-form">
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <h4><%= @user_selected_msa %></h4>
+    <p>Market size: <%= @msa_market_size %></p>
+    <p>Total Number of Hospitals: <%= @hospital_count %></p>
+    <p>Total Number of Beds: <%= @beds_count %></p>
+  </div>
+  <div class="row">
+    <h3>Top Hospitals</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Hospital</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Phone</th>
+          <th>Staffed Beds</th>
+          <th>Discharges</th>
+          <th>COPD Readmissions</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @hospitals_with_metrics.first(5).map {|h| h[0] }.each do |hospital| %>
+        <tr>
+          <td><%= hospital.name %></td>
+          <td><%= hospital.address %></td>
+          <td><%= hospital.city %></td>
+          <td><%= hospital.state %></td> 
+          <td><%= hospital.phone %></td>
+          <td><%= hospital.hospital_bedsizes.first.staffed_beds %></td>
+          <td><%= hospital.hospital_bedsizes.first.total_discharges %></td>
+          <td><%= hospital.copd_readmissions %></td> 
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
