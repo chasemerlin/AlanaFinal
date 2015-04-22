@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'results/index'
+  root 'results#index'
 
+  get 'results/index'
   post 'results/search'
 
   resources :hospital_readmissions
