@@ -16,7 +16,11 @@
   <% if @user_selected_msa %> 
     <div class="row">
       <h4><%= @user_selected_msa %></h4>
-      <p>Projected Market size: <%= @msa_market_size.round(0) %></p>
+      <% if @msa_market_size.class == String %>
+        <p>Projected Market size: <%= @msa_market_size %></p>
+      <% else %>
+        <p>Projected Market size: <%= @msa_market_size.round(0) %></p>
+      <% end %>
       <p>Total Number of Hospitals: <%= @hospital_count %></p>
       <p>Total Number of Beds: <%= @beds_count %></p>
     </div>
@@ -58,9 +62,9 @@
 <%= javascript_tag do %>
   window.msas = <%=raw @msas.to_json %>;
   $(function() {
+    console.log(msas)
     $( "#tags" ).autocomplete({
       source: msas
     });
-    
   });
 <% end %>

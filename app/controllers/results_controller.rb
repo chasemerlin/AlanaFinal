@@ -13,9 +13,9 @@ class ResultsController < ApplicationController
       else
         inferred_state = inferred_state_list.first.state_abbreviation
         # Compute predicted market size for MSA
-        state_copd_rate = StateCopd.where(abbreviation: inferred_state).first.percentage
+        state_copd_rate = StateCopd.where(abbreviation: inferred_state).first.percentage if StateCopd.where(abbreviation: inferred_state).first
         msa_population = ZipMsa.where(msa_name: @user_selected_msa).first.msa_population
-        if msa_population && msa_population!= 0
+        if msa_population && msa_population!= 0 && state_copd_rate
           @msa_market_size = msa_population * state_copd_rate
         else
           @msa_market_size = "N/A"
@@ -77,6 +77,7 @@ class ResultsController < ApplicationController
           @hospitals_with_metrics << hospital_with_metric
         end
         @hospitals_with_metrics = @hospitals_with_metrics.sort_by {|k| k[1]}.reverse.select {|k| k[1]!=0}
+        @msas = @msas || ZipMsa.all.map {|msa| msa.msa_name}.uniq
         render 'index' 
       end 
     end
