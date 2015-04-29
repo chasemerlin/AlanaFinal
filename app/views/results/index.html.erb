@@ -3,6 +3,13 @@
     <div class="col-md-6 col-md-offset-3 well">
       <%= form_tag(results_search_path, method: 'post', class:'master-search-form') do %>
         <div class="ui-widget form-group">
+          <label for="hospitals" class="">Hospital</label>
+          <input id="hospitals" name="hospitals" class="msa-input">
+        </div>
+        <br>
+        <p>OR</p>
+        <br>
+        <div class="ui-widget form-group">
           <label for="tags" class="">MSA</label>
           <input id="tags" name="tags" class="msa-input">
         </div>
@@ -57,14 +64,49 @@
         </tbody>
       </table>
     </div>
+  <% end %>
+  <% if @user_selected_hospital %>
+    <div class="row">
+      <h4><%= @inferred_msa %></h4>
+      <% if @msa_market_size.class == String %>
+        <p>Projected Market size: <%= @msa_market_size %></p>
+      <% else %>
+        <p>Projected Market size: <%= @msa_market_size.round(0) %></p>
+      <% end %>
+      <p>Total Number of Hospitals: <%= @hospital_count %></p>
+      <p>Total Number of Beds: <%= @beds_count %></p>
+    </div>
+    <div class="row">
+      <h3>Hospital Information</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Hospital</th>
+            <th>Staffed Beds</th>
+            <th>Discharges</th>
+            <th>COPD Readmissions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @hospital.name %></td>
+            <td><%= @hospital_beds %></td>
+            <td><%= @discharges %></td>
+            <td><%= @copd_readmissions %></td>
+          </tr>
+        </tbody>
+      </table>
   <% end %>  
 </div>
 <%= javascript_tag do %>
   window.msas = <%=raw @msas.to_json %>;
+  window.hospitals = <%=raw @hospitals.to_json %>;
   $(function() {
-    console.log(msas)
     $( "#tags" ).autocomplete({
       source: msas
+    });
+    $( "#hospitals" ).autocomplete({
+      source: hospitals
     });
   });
 <% end %>
