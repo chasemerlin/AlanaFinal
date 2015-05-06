@@ -5,6 +5,10 @@ class ResultsController < ApplicationController
   end
 
   def search
+    binding.pry
+    @beds_metric = params[:staffed_beds]
+    @discharges_metric = params[:discharges]
+    @copd_readmissions_metric = params[:copd_readmissions]
     @user_selected_msa = params[:tags] unless params[:tags].empty?
     @user_selected_hospital = params[:hospitals] unless params[:hospitals].empty?
     # Handle invalid case where user inputs both MSA and hospital
@@ -62,26 +66,35 @@ class ResultsController < ApplicationController
           @hospitals_with_metrics = []
           hospitals.each do |hospital|
             # Compute bed rating
-            bed_rating = 0
-            bedsize = hospital.hospital_bedsizes.first
-            staffed_beds = bedsize.staffed_beds if bedsize
-            if staffed_beds
-              bed_rating = staffed_beds.to_f/max_bed_count
+            if @beds_metric
+              bed_rating = 0
+              bedsize = hospital.hospital_bedsizes.first
+              staffed_beds = bedsize.staffed_beds if bedsize
+              if staffed_beds
+                bed_rating = staffed_beds.to_f/max_bed_count
+              end
             end
             # Compute discharges rating
-            discharges_rating = 0
-            discharges = bedsize.total_discharges if bedsize
-            if discharges
-              discharges_rating = discharges.to_f/max_discharges_count
+            if @discharges_metric
+              discharges_rating = 0
+              bedsize = hospital.hospital_bedsizes.first
+              discharges = bedsize.total_discharges if bedsize
+              if discharges
+                discharges_rating = discharges.to_f/max_discharges_count
+              end
             end
-            # Compute discharges rating
-            copd_readmissions = hospital.copd_readmissions
-            readmissions_rating = copd_readmissions.to_f/max_readmissions_count
+            # Compute readmissions rating
+            if @copd_readmissions_metric
+              copd_readmissions = hospital.copd_readmissions
+              readmissions_rating = copd_readmissions.to_f/max_readmissions_count
+            end
             # Compute overall rating
             if bed_rating == 0 || discharges_rating==0 || readmissions_rating==0
               overall_rating = 0
             else
-              overall_rating = (bed_rating + discharges_rating + readmissions_rating)/3
+              ratings = [bed_rating, discharges_rating, readmissions_rating]
+              ratings = ratings.select {|rating| !rating.nil?}
+              overall_rating = ratings.inject{ |sum, el| sum + el }.to_f / ratings.size
             end
             hospital_with_metric = []
             hospital_with_metric << hospital

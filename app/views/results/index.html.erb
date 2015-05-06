@@ -14,6 +14,15 @@
           <input id="tags" name="tags" class="msa-input">
         </div>
         <br>
+        <div class="">
+          <%= check_box_tag(:staffed_beds, 1, true) %>
+          <%= label_tag(:staffed_beds, "Staffed Beds", class: "checkbox-label") %>
+          <%= check_box_tag(:discharges, 1, true) %>
+          <%= label_tag(:discharges, "Discharges", class: "checkbox-label") %>
+          <%= check_box_tag(:copd_readmissions, 1, true) %>
+          <%= label_tag(:copd_readmissions, "COPD Readmissions", class: "checkbox-label") %>
+        </div>
+        <br>
         <div class="form-group search-button-form">
           <%= submit_tag "Search", class: "btn btn-primary" %>
         </div>
@@ -42,9 +51,15 @@
             <th>City</th>
             <th>State</th>
             <th>Phone</th>
-            <th>Staffed Beds</th>
-            <th>Discharges</th>
-            <th>COPD Readmissions</th>
+            <% if @beds_metric %>
+              <th>Staffed Beds</th>
+            <% end %>
+            <% if @discharges_metric %>
+              <th>Discharges</th>
+            <% end %>
+            <% if @copd_readmissions_metric %>
+              <th>COPD Readmissions</th>
+            <% end %>
           </tr>
         </thead>
         <tbody>
@@ -56,9 +71,15 @@
             <td><%= hospital.city %></td>
             <td><%= hospital.state %></td> 
             <td><%= hospital.phone %></td>
-            <td><%= hospital.hospital_bedsizes.first.staffed_beds %></td>
-            <td><%= hospital.hospital_bedsizes.first.total_discharges %></td>
-            <td><%= hospital.copd_readmissions %></td> 
+            <% if @beds_metric %>
+              <td><%= hospital.hospital_bedsizes.first.staffed_beds %></td>
+            <% end %>
+            <% if @discharges_metric %>
+              <td><%= hospital.hospital_bedsizes.first.total_discharges %></td> 
+            <% end %>
+            <% if @copd_readmissions_metric %>
+              <td><%= hospital.copd_readmissions %></td> 
+            <% end %>
           </tr>
         <% end %>
         </tbody>
@@ -82,17 +103,29 @@
         <thead>
           <tr>
             <th>Hospital</th>
-            <th>Staffed Beds</th>
-            <th>Discharges</th>
-            <th>COPD Readmissions</th>
+            <% if @beds_metric %>
+              <th>Staffed Beds</th>
+            <% end %>
+            <% if @discharges_metric %>
+              <th>Discharges</th>
+            <% end %>
+            <% if @copd_readmissions_metric %>
+              <th>COPD Readmissions</th>
+            <% end %>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><%= @hospital.name %></td>
-            <td><%= @hospital_beds %></td>
-            <td><%= @discharges %></td>
-            <td><%= @copd_readmissions %></td>
+            <% if @beds_metric %>
+              <td><%= @hospital_beds %></td>
+            <% end %>
+            <% if @discharges_metric %>
+              <td><%= @discharges %></td>
+            <% end %>
+            <% if @copd_readmissions_metric %>
+              <td><%= @copd_readmissions %></td>
+            <% end %>
           </tr>
         </tbody>
       </table>
