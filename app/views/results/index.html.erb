@@ -15,11 +15,11 @@
         </div>
         <br>
         <div class="">
-          <%= check_box_tag(:staffed_beds, 1, true) %>
+          <%= check_box_tag(:staffed_beds, 1, params[:remember_beds]) %>
           <%= label_tag(:staffed_beds, "Staffed Beds", class: "checkbox-label") %>
-          <%= check_box_tag(:discharges, 1, true) %>
+          <%= check_box_tag(:discharges, 1, params[:remember_discharges]) %>
           <%= label_tag(:discharges, "Discharges", class: "checkbox-label") %>
-          <%= check_box_tag(:copd_readmissions, 1, true) %>
+          <%= check_box_tag(:copd_readmissions, 1, params[:remember_readmissions]) %>
           <%= label_tag(:copd_readmissions, "COPD Readmissions", class: "checkbox-label") %>
         </div>
         <br>

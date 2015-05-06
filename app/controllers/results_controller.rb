@@ -5,10 +5,12 @@ class ResultsController < ApplicationController
   end
 
   def search
-    binding.pry
     @beds_metric = params[:staffed_beds]
+    params[:remember_beds] = true if params[:staffed_beds] 
     @discharges_metric = params[:discharges]
+    params[:remember_discharges] = true if params[:discharges]
     @copd_readmissions_metric = params[:copd_readmissions]
+    params[:remember_readmissions] = true if params[:copd_readmissions]
     @user_selected_msa = params[:tags] unless params[:tags].empty?
     @user_selected_hospital = params[:hospitals] unless params[:hospitals].empty?
     # Handle invalid case where user inputs both MSA and hospital
