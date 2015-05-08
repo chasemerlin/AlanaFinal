@@ -66,7 +66,7 @@
         <% @hospitals_with_metrics.first(5).map {|h| h[0] }.each_with_index do |hospital,i| %>
           <tr>
             <td><%= i + 1 %></td>
-            <td><%= hospital.name %></td>
+            <td><%= link_to "#{hospital.name}", hospital %></td>
             <td><%= hospital.address %></td>
             <td><%= hospital.city %></td>
             <td><%= hospital.state %></td> 
@@ -116,7 +116,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= @hospital.name %></td>
+            <td><%= link_to "#{@hospital.name}", @hospital %></td>
             <% if @beds_metric %>
               <td><%= @hospital_beds %></td>
             <% end %>

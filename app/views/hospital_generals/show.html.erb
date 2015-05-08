@@ -41,8 +41,8 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @hospital_general.type %>
+  <strong>Hospital Type:</strong>
+  <%= @hospital_general.hospital_type %>
 </p>
 
 <p>
@@ -55,5 +55,24 @@
   <%= @hospital_general.emergency %>
 </p>
 
+<% bedsize = @hospital_general.hospital_bedsizes.first %>
+<% staffed_beds = bedsize.staffed_beds if bedsize %>
+<% discharges = bedsize.total_discharges if bedsize %>
+<% copd_readmissions = @hospital_general.copd_readmissions %>
+
+<p>
+  <strong>Staffed Beds:</strong>
+  <%= !staffed_beds.nil? ? staffed_beds : "N/A" %>
+</p>
+
+<p>
+  <strong>Discharges:</strong>
+  <%= !discharges.nil? ? discharges : "N/A" %>
+</p>
+
+<p>
+  <strong>COPD Readmissions:</strong>
+  <%= !(copd_readmissions == 0) ? copd_readmissions : "N/A" %>
+</p>
+
 <%= link_to 'Edit', edit_hospital_general_path(@hospital_general) %> |
-<%= link_to 'Back', hospital_generals_path %>
