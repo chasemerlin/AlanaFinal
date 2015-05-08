@@ -6,9 +6,7 @@
           <label for="hospitals" class="">Hospital</label>
           <input id="hospitals" name="hospitals" class="msa-input">
         </div>
-        <br>
         <p>OR</p>
-        <br>
         <div class="ui-widget form-group">
           <label for="tags" class="">MSA</label>
           <input id="tags" name="tags" class="msa-input">
@@ -23,12 +21,38 @@
           <%= label_tag(:copd_readmissions, "COPD Readmissions", class: "checkbox-label") %>
         </div>
         <br>
+        <select name="range" id="range" class="form-control search-range">
+          <option value="5">Top 5</option>
+          <option value="10">Top 10</option>
+          <option value="15">Top 15</option>
+        </select>
         <div class="form-group search-button-form">
-          <%= submit_tag "Search", class: "btn btn-primary" %>
+          <%= submit_tag "Search", class: "btn btn-primary search-button" %>
+          <i class="fa-li fa fa-spinner fa-spin"></i>
         </div>
       <% end %>
     </div>
   </div>
+  <div class="spinner">
+      <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container3">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+    </div>
   <% if @user_selected_msa %> 
     <div class="row">
       <h4><%= @user_selected_msa %></h4>
@@ -47,10 +71,6 @@
           <tr>
             <th>Rank</th>
             <th>Hospital</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Phone</th>
             <% if @beds_metric %>
               <th>Staffed Beds</th>
             <% end %>
@@ -63,14 +83,10 @@
           </tr>
         </thead>
         <tbody>
-        <% @hospitals_with_metrics.first(5).map {|h| h[0] }.each_with_index do |hospital,i| %>
+        <% @hospitals_with_metrics.first(@range).map {|h| h[0] }.each_with_index do |hospital,i| %>
           <tr>
             <td><%= i + 1 %></td>
             <td><%= link_to "#{hospital.name}", hospital %></td>
-            <td><%= hospital.address %></td>
-            <td><%= hospital.city %></td>
-            <td><%= hospital.state %></td> 
-            <td><%= hospital.phone %></td>
             <% if @beds_metric %>
               <td><%= hospital.hospital_bedsizes.first.staffed_beds %></td>
             <% end %>
@@ -135,6 +151,12 @@
   window.msas = <%=raw @msas.to_json %>;
   window.hospitals = <%=raw @hospitals.to_json %>;
   $(function() {
+    $('.spinner').hide();
+    console.log("working");
+    $('.search-button').on("click", function() {
+      console.log('something');
+      $('.spinner').show();
+    });
     $( "#tags" ).autocomplete({
       source: msas
     });

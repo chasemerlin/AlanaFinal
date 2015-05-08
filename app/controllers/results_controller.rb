@@ -5,6 +5,7 @@ class ResultsController < ApplicationController
   end
 
   def search
+    @range = params[:range].to_i
     @beds_metric = params[:staffed_beds]
     params[:remember_beds] = true if params[:staffed_beds] 
     @discharges_metric = params[:discharges]
@@ -13,8 +14,12 @@ class ResultsController < ApplicationController
     params[:remember_readmissions] = true if params[:copd_readmissions]
     @user_selected_msa = params[:tags] unless params[:tags].empty?
     @user_selected_hospital = params[:hospitals] unless params[:hospitals].empty?
+    # Handle invalid case where user does not select any metrics
+    if !@beds_metric && !@discharges_metric && !@copd_readmissions_metric
+      flash[:notice] = "Please select metrics to search by."
+      redirect_to results_index_path
     # Handle invalid case where user inputs both MSA and hospital
-    if !@user_selected_msa && !@user_selected_hospital
+    elsif !@user_selected_msa && !@user_selected_hospital
       flash[:notice] = "Please enter an MSA or Hospital."
       redirect_to results_index_path
     # Handle invalid case where user does not input anything
