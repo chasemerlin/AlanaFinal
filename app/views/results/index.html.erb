@@ -59,10 +59,10 @@
       <% if @msa_market_size.class == String %>
         <p>Projected Market size: <%= @msa_market_size %></p>
       <% else %>
-        <p>Projected Market size: <%= @msa_market_size.round(0) %></p>
+        <p>Projected Market size: <%= number_with_delimiter(@msa_market_size.round(0)) %></p>
       <% end %>
       <p>Total Number of Hospitals: <%= @hospital_count %></p>
-      <p>Total Number of Beds: <%= @beds_count %></p>
+      <p>Total Number of Beds: <%= number_with_delimiter @beds_count %></p>
     </div>
     <div class="row">
       <h3>Top Hospitals</h3>
@@ -91,7 +91,7 @@
               <td><%= hospital.hospital_bedsizes.first.staffed_beds %></td>
             <% end %>
             <% if @discharges_metric %>
-              <td><%= hospital.hospital_bedsizes.first.total_discharges %></td> 
+              <td><%= number_with_delimiter hospital.hospital_bedsizes.first.total_discharges %></td> 
             <% end %>
             <% if @copd_readmissions_metric %>
               <td><%= hospital.copd_readmissions %></td> 
@@ -108,10 +108,10 @@
       <% if @msa_market_size.class == String %>
         <p>Projected Market size: <%= @msa_market_size %></p>
       <% else %>
-        <p>Projected Market size: <%= @msa_market_size.round(0) %></p>
+        <p>Projected Market size: <%= number_with_delimiter @msa_market_size.round(0) %></p>
       <% end %>
       <p>Total Number of Hospitals: <%= @hospital_count %></p>
-      <p>Total Number of Beds: <%= @beds_count %></p>
+      <p>Total Number of Beds: <%= number_with_delimiter @beds_count %></p>
     </div>
     <div class="row">
       <h3>Hospital Information</h3>
@@ -137,7 +137,7 @@
               <td><%= @hospital_beds %></td>
             <% end %>
             <% if @discharges_metric %>
-              <td><%= @discharges %></td>
+              <td><%= number_with_delimiter @discharges %></td>
             <% end %>
             <% if @copd_readmissions_metric %>
               <td><%= @copd_readmissions %></td>
