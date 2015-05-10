@@ -4,12 +4,12 @@
       <%= form_tag(results_search_path, method: 'post', class:'master-search-form') do %>
         <div class="ui-widget form-group">
           <label for="hospitals" class="">Hospital</label>
-          <input id="hospitals" name="hospitals" class="msa-input">
+          <input id="hospitals" name="hospitals" class="hospital-input form-control" placeholder="Search by Hospital">
         </div>
-        <p>OR</p>
+        <p class="search-form-divider">OR</p>
         <div class="ui-widget form-group">
           <label for="tags" class="">MSA</label>
-          <input id="tags" name="tags" class="msa-input">
+          <input id="tags" name="tags" class="msa-input form-control" placeholder="Search by MSA">
         </div>
         <br>
         <div class="">
@@ -95,6 +95,46 @@
             <% end %>
             <% if @copd_readmissions_metric %>
               <td><%= hospital.copd_readmissions %></td> 
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <h3>Unranked Hospitals</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Hospital</th>
+            <% if @beds_metric %>
+              <th>Staffed Beds</th>
+            <% end %>
+            <% if @discharges_metric %>
+              <th>Discharges</th>
+            <% end %>
+            <% if @copd_readmissions_metric %>
+              <th>COPD Readmissions</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+        <% @unranked_hospitals.map {|h| h[0] }.each_with_index do |hospital,i| %>
+          <% bedsize = hospital.hospital_bedsizes.first %>
+          <tr>
+            <td><%= link_to "#{hospital.name}", hospital %></td>
+            <% if @beds_metric %>
+              <td>
+                <%= !bedsize.nil? ? bedsize.staffed_beds : "-" %>
+              </td>
+            <% end %>
+            <% if @discharges_metric %>
+              <td>
+                <%= !bedsize.nil? ? number_with_delimiter(bedsize.total_discharges) : "-" %>
+              </td> 
+            <% end %>
+            <% if @copd_readmissions_metric %>
+              <td><%= hospital.copd_readmissions == 0 ? "-" : hospital.copd_readmissions %></td> 
             <% end %>
           </tr>
         <% end %>

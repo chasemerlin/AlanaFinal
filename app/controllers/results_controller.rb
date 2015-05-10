@@ -108,6 +108,7 @@ class ResultsController < ApplicationController
             hospital_with_metric << overall_rating
             @hospitals_with_metrics << hospital_with_metric
           end
+          @unranked_hospitals = @hospitals_with_metrics.select {|k| k[1]==0}
           @hospitals_with_metrics = @hospitals_with_metrics.sort_by {|k| k[1]}.reverse.select {|k| k[1]!=0}
           @msas = @msas || ZipMsa.all.map {|msa| msa.msa_name}.uniq
           @hospitals = @hospitals || HospitalGeneral.all.map {|hospital| hospital.name.split(" ").map {|word| word.downcase.mb_chars.capitalize.to_s}.join(" ")}

@@ -37,7 +37,7 @@
 
 <p>
   <strong>Phone:</strong>
-  <%= @hospital_general.phone %>
+  <%= number_to_phone(@hospital_general.phone) %>
 </p>
 
 <p>
@@ -67,7 +67,7 @@
 
 <p>
   <strong>Discharges:</strong>
-  <%= !discharges.nil? ? discharges : "N/A" %>
+  <%= !discharges.nil? ? number_with_delimiter(discharges) : "N/A" %>
 </p>
 
 <p>
