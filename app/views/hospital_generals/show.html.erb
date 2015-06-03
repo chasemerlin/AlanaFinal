@@ -75,3 +75,8 @@
   <%= !(copd_readmissions == 0) ? copd_readmissions : "N/A" %>
 </p>
 
+<p>
+  <strong>Fines:</strong>
+  $<%= number_with_delimiter @hospital_general.total_fines.round(0) %>
+</p>
+

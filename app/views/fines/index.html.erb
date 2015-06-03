@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Fines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hospital name</th>
+      <th>Staffed beds</th>
+      <th>Total payments</th>
+      <th>Copd total</th>
+      <th>Copd ratio</th>
+      <th>Ami total</th>
+      <th>Ami ratio</th>
+      <th>Pneumonia total</th>
+      <th>Pneumonia ratio</th>
+      <th>Hip knee total</th>
+      <th>Hip knee ratio</th>
+      <th>Hf total</th>
+      <th>Hf ratio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fines.each do |fine| %>
+      <tr>
+        <td><%= fine.hospital_name %></td>
+        <td><%= fine.staffed_beds %></td>
+        <td><%= fine.total_payments %></td>
+        <td><%= fine.copd_total %></td>
+        <td><%= fine.copd_ratio %></td>
+        <td><%= fine.ami_total %></td>
+        <td><%= fine.ami_ratio %></td>
+        <td><%= fine.pneumonia_total %></td>
+        <td><%= fine.pneumonia_ratio %></td>
+        <td><%= fine.hip_knee_total %></td>
+        <td><%= fine.hip_knee_ratio %></td>
+        <td><%= fine.hf_total %></td>
+        <td><%= fine.hf_ratio %></td>
+        <td><%= link_to 'Show', fine %></td>
+        <td><%= link_to 'Edit', edit_fine_path(fine) %></td>
+        <td><%= link_to 'Destroy', fine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fine', new_fine_path %>

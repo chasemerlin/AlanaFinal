@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hospital name:</strong>
+  <%= @fine.hospital_name %>
+</p>
+
+<p>
+  <strong>Staffed beds:</strong>
+  <%= @fine.staffed_beds %>
+</p>
+
+<p>
+  <strong>Total payments:</strong>
+  <%= @fine.total_payments %>
+</p>
+
+<p>
+  <strong>Copd total:</strong>
+  <%= @fine.copd_total %>
+</p>
+
+<p>
+  <strong>Copd ratio:</strong>
+  <%= @fine.copd_ratio %>
+</p>
+
+<p>
+  <strong>Ami total:</strong>
+  <%= @fine.ami_total %>
+</p>
+
+<p>
+  <strong>Ami ratio:</strong>
+  <%= @fine.ami_ratio %>
+</p>
+
+<p>
+  <strong>Pneumonia total:</strong>
+  <%= @fine.pneumonia_total %>
+</p>
+
+<p>
+  <strong>Pneumonia ratio:</strong>
+  <%= @fine.pneumonia_ratio %>
+</p>
+
+<p>
+  <strong>Hip knee total:</strong>
+  <%= @fine.hip_knee_total %>
+</p>
+
+<p>
+  <strong>Hip knee ratio:</strong>
+  <%= @fine.hip_knee_ratio %>
+</p>
+
+<p>
+  <strong>Hf total:</strong>
+  <%= @fine.hf_total %>
+</p>
+
+<p>
+  <strong>Hf ratio:</strong>
+  <%= @fine.hf_ratio %>
+</p>
+
+<%= link_to 'Edit', edit_fine_path(@fine) %> |
+<%= link_to 'Back', fines_path %>

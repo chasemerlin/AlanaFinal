@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412191531) do
+ActiveRecord::Schema.define(version: 20150602024548) do
+
+  create_table "fines", force: :cascade do |t|
+    t.string   "hospital_name"
+    t.integer  "staffed_beds"
+    t.integer  "total_payments"
+    t.integer  "copd_total"
+    t.decimal  "copd_ratio"
+    t.integer  "ami_total"
+    t.decimal  "ami_ratio"
+    t.integer  "pneumonia_total"
+    t.decimal  "pneumonia_ratio"
+    t.integer  "hip_knee_total"
+    t.decimal  "hip_knee_ratio"
+    t.integer  "hf_total"
+    t.decimal  "hf_ratio"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "hospital_bedsizes", force: :cascade do |t|
     t.string   "hospital_name"

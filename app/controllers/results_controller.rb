@@ -118,7 +118,7 @@ class ResultsController < ApplicationController
       if @user_selected_hospital
         @hospital = HospitalGeneral.where(name: @user_selected_hospital.upcase).first
         if @hospital.nil?
-          flash[:notice] = "The hospita you entered was not found."
+          flash[:notice] = "The hospital you entered was not found."
           redirect_to results_index_path
         else
           # Compute predicted market size for the MSA in which the hospital is located

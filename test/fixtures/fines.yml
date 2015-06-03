@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hospital_name: MyString
+  staffed_beds: 1
+  total_payments: 1
+  copd_total: 1
+  copd_ratio: 9.99
+  ami_total: 1
+  ami_ratio: 9.99
+  pneumonia_total: 1
+  pneumonia_ratio: 9.99
+  hip_knee_total: 1
+  hip_knee_ratio: 9.99
+  hf_total: 1
+  hf_ratio: 9.99
+
+two:
+  hospital_name: MyString
+  staffed_beds: 1
+  total_payments: 1
+  copd_total: 1
+  copd_ratio: 9.99
+  ami_total: 1
+  ami_ratio: 9.99
+  pneumonia_total: 1
+  pneumonia_ratio: 9.99
+  hip_knee_total: 1
+  hip_knee_ratio: 9.99
+  hf_total: 1
+  hf_ratio: 9.99

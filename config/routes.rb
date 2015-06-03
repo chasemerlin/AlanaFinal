@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :fines
+
   root 'results#index'
 
   get 'results/index'

@@ -1,0 +1,69 @@
+<%= form_for(@fine) do |f| %>
+  <% if @fine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fine.errors.count, "error") %> prohibited this fine from being saved:</h2>
+
+      <ul>
+      <% @fine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :hospital_name %><br>
+    <%= f.text_field :hospital_name %>
+  </div>
+  <div class="field">
+    <%= f.label :staffed_beds %><br>
+    <%= f.number_field :staffed_beds %>
+  </div>
+  <div class="field">
+    <%= f.label :total_payments %><br>
+    <%= f.number_field :total_payments %>
+  </div>
+  <div class="field">
+    <%= f.label :copd_total %><br>
+    <%= f.number_field :copd_total %>
+  </div>
+  <div class="field">
+    <%= f.label :copd_ratio %><br>
+    <%= f.text_field :copd_ratio %>
+  </div>
+  <div class="field">
+    <%= f.label :ami_total %><br>
+    <%= f.number_field :ami_total %>
+  </div>
+  <div class="field">
+    <%= f.label :ami_ratio %><br>
+    <%= f.text_field :ami_ratio %>
+  </div>
+  <div class="field">
+    <%= f.label :pneumonia_total %><br>
+    <%= f.number_field :pneumonia_total %>
+  </div>
+  <div class="field">
+    <%= f.label :pneumonia_ratio %><br>
+    <%= f.text_field :pneumonia_ratio %>
+  </div>
+  <div class="field">
+    <%= f.label :hip_knee_total %><br>
+    <%= f.number_field :hip_knee_total %>
+  </div>
+  <div class="field">
+    <%= f.label :hip_knee_ratio %><br>
+    <%= f.text_field :hip_knee_ratio %>
+  </div>
+  <div class="field">
+    <%= f.label :hf_total %><br>
+    <%= f.number_field :hf_total %>
+  </div>
+  <div class="field">
+    <%= f.label :hf_ratio %><br>
+    <%= f.text_field :hf_ratio %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
