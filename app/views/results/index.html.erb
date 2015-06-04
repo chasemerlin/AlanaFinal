@@ -19,6 +19,7 @@
           <%= label_tag(:discharges, "Discharges", class: "checkbox-label") %>
           <%= check_box_tag(:copd_readmissions, 1, params[:remember_readmissions]) %>
           <%= label_tag(:copd_readmissions, "COPD Readmissions", class: "checkbox-label") %>
+          <p class="help-block">Criteria for your search.</p>
         </div>
         <br>
         <select name="range" id="range" class="form-control search-range">
