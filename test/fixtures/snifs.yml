@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  phone_number: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zipcode: MyString
+  mcr_rating: 1
+  beds_capacity: 1
+  medicare: false
+  medicaid: false
+  percentage_occupied: 1.5
+  beds_unavailable: 1
+  in_hospital: MyString
+  population: 1
+  corporation: MyString
+
+two:
+  name: MyString
+  phone_number: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zipcode: MyString
+  mcr_rating: 1
+  beds_capacity: 1
+  medicare: false
+  medicaid: false
+  percentage_occupied: 1.5
+  beds_unavailable: 1
+  in_hospital: MyString
+  population: 1
+  corporation: MyString

@@ -1,0 +1,1 @@
+json.extract! @snif, :id, :name, :phone_number, :address, :city, :state, :zipcode, :mcr_rating, :beds_capacity, :medicare, :medicaid, :percentage_occupied, :beds_unavailable, :in_hospital, :population, :corporation, :created_at, :updated_at

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :snifs
+
   resources :fines
 
   root 'results#index'

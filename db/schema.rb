@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602024548) do
+ActiveRecord::Schema.define(version: 20150611052624) do
 
   create_table "fines", force: :cascade do |t|
     t.string   "hospital_name"
@@ -80,6 +80,27 @@ ActiveRecord::Schema.define(version: 20150602024548) do
     t.string   "measure_end_date"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+  end
+
+  create_table "snifs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone_number"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.integer  "mcr_rating"
+    t.integer  "beds_capacity"
+    t.boolean  "medicare"
+    t.boolean  "medicaid"
+    t.float    "percentage_occupied"
+    t.integer  "beds_unavailable"
+    t.integer  "beds_available"
+    t.string   "in_hospital"
+    t.integer  "population"
+    t.string   "corporation"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "state_copds", force: :cascade do |t|
