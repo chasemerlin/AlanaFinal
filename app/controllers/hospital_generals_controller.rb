@@ -10,6 +10,11 @@ class HospitalGeneralsController < ApplicationController
   # GET /hospital_generals/1
   # GET /hospital_generals/1.json
   def show
+    # get SNIFs in the same MSA as hospital
+    h = HospitalGeneral.find(params["id"])
+    zip = ZipMsa.where(zip_code: h.zip).first
+    zips_in_msa = ZipMsa.where(msa_name: zip.msa_name).map {|record| record.zip_code}
+    @snifs = Snif.where("zipcode IN (?)", zips_in_msa)
   end
 
   # GET /hospital_generals/new

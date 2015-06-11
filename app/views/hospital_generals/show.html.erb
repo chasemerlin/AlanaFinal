@@ -80,3 +80,45 @@
   $<%= number_with_delimiter @hospital_general.total_fines.round(0) %>
 </p>
 
+<h1>Nearby Snifs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone number</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zipcode</th>
+      <th>Mcr rating</th>
+      <th>Beds capacity</th>
+      <th>Medicare</th>
+      <th>Medicaid</th>
+      <th>Percentage occupied</th>
+      <th>Population</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @snifs.each do |snif| %>
+      <tr>
+        <td><%= snif.name %></td>
+        <td><%= snif.phone_number %></td>
+        <td><%= snif.address %></td>
+        <td><%= snif.city %></td>
+        <td><%= snif.state %></td>
+        <td><%= snif.zipcode %></td>
+        <td><%= snif.mcr_rating %></td>
+        <td><%= snif.beds_capacity %></td>
+        <td><%= snif.medicare %></td>
+        <td><%= snif.medicaid %></td>
+        <td><%= snif.percentage_occupied %></td>
+        <td><%= snif.population %></td>
+        <td><%= link_to 'Show', snif %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
