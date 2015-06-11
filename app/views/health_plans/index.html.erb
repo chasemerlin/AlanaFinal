@@ -1,0 +1,171 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Health Plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mco name</th>
+      <th>Mco</th>
+      <th>Mco owner</th>
+      <th>Owner</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State abbreviation</th>
+      <th>Zip</th>
+      <th>Url</th>
+      <th>Profit status</th>
+      <th>Private public</th>
+      <th>Telephone one</th>
+      <th>Telephone two</th>
+      <th>Fax</th>
+      <th>Contracted pbm</th>
+      <th>Contracted sp vendor</th>
+      <th>Service areas</th>
+      <th>Aliases</th>
+      <th>Provider sponsored</th>
+      <th>Blues</th>
+      <th>Al</th>
+      <th>Ak</th>
+      <th>Ar</th>
+      <th>Az</th>
+      <th>Ca</th>
+      <th>Co</th>
+      <th>Ct</th>
+      <th>Dc</th>
+      <th>De</th>
+      <th>Fl</th>
+      <th>Ga</th>
+      <th>Hi</th>
+      <th>Ia</th>
+      <th>Indiana</th>
+      <th>Il</th>
+      <th>In</th>
+      <th>Ks</th>
+      <th>Ky</th>
+      <th>La</th>
+      <th>Ma</th>
+      <th>Me</th>
+      <th>Mi</th>
+      <th>Md</th>
+      <th>Mn</th>
+      <th>Ms</th>
+      <th>Mo</th>
+      <th>Mt</th>
+      <th>Nc</th>
+      <th>Nd</th>
+      <th>Ne</th>
+      <th>Nh</th>
+      <th>Nj</th>
+      <th>Nm</th>
+      <th>Nv</th>
+      <th>Ny</th>
+      <th>Oh</th>
+      <th>Ok</th>
+      <th>Or</th>
+      <th>Pa</th>
+      <th>Ri</th>
+      <th>Sc</th>
+      <th>Sd</th>
+      <th>Tn</th>
+      <th>Tx</th>
+      <th>Ut</th>
+      <th>Va</th>
+      <th>Vt</th>
+      <th>Wa</th>
+      <th>Wi</th>
+      <th>Wv</th>
+      <th>Wy</th>
+      <th>Pr</th>
+      <th>Foreign</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @health_plans.each do |health_plan| %>
+      <tr>
+        <td><%= health_plan.mco_name %></td>
+        <td><%= health_plan.mco_id %></td>
+        <td><%= health_plan.mco_owner %></td>
+        <td><%= health_plan.owner_id %></td>
+        <td><%= health_plan.address %></td>
+        <td><%= health_plan.city %></td>
+        <td><%= health_plan.state_abbreviation %></td>
+        <td><%= health_plan.zip %></td>
+        <td><%= health_plan.url %></td>
+        <td><%= health_plan.profit_status %></td>
+        <td><%= health_plan.private_public %></td>
+        <td><%= health_plan.telephone_one %></td>
+        <td><%= health_plan.telephone_two %></td>
+        <td><%= health_plan.fax %></td>
+        <td><%= health_plan.contracted_pbm %></td>
+        <td><%= health_plan.contracted_sp_vendor %></td>
+        <td><%= health_plan.service_areas %></td>
+        <td><%= health_plan.aliases %></td>
+        <td><%= health_plan.provider_sponsored %></td>
+        <td><%= health_plan.blues %></td>
+        <td><%= health_plan.al %></td>
+        <td><%= health_plan.ak %></td>
+        <td><%= health_plan.ar %></td>
+        <td><%= health_plan.az %></td>
+        <td><%= health_plan.ca %></td>
+        <td><%= health_plan.co %></td>
+        <td><%= health_plan.ct %></td>
+        <td><%= health_plan.dc %></td>
+        <td><%= health_plan.de %></td>
+        <td><%= health_plan.fl %></td>
+        <td><%= health_plan.ga %></td>
+        <td><%= health_plan.hi %></td>
+        <td><%= health_plan.ia %></td>
+        <td><%= health_plan.indiana %></td>
+        <td><%= health_plan.il %></td>
+        <td><%= health_plan.in %></td>
+        <td><%= health_plan.ks %></td>
+        <td><%= health_plan.ky %></td>
+        <td><%= health_plan.la %></td>
+        <td><%= health_plan.ma %></td>
+        <td><%= health_plan.me %></td>
+        <td><%= health_plan.mi %></td>
+        <td><%= health_plan.md %></td>
+        <td><%= health_plan.mn %></td>
+        <td><%= health_plan.ms %></td>
+        <td><%= health_plan.mo %></td>
+        <td><%= health_plan.mt %></td>
+        <td><%= health_plan.nc %></td>
+        <td><%= health_plan.nd %></td>
+        <td><%= health_plan.ne %></td>
+        <td><%= health_plan.nh %></td>
+        <td><%= health_plan.nj %></td>
+        <td><%= health_plan.nm %></td>
+        <td><%= health_plan.nv %></td>
+        <td><%= health_plan.ny %></td>
+        <td><%= health_plan.oh %></td>
+        <td><%= health_plan.ok %></td>
+        <td><%= health_plan.or %></td>
+        <td><%= health_plan.pa %></td>
+        <td><%= health_plan.ri %></td>
+        <td><%= health_plan.sc %></td>
+        <td><%= health_plan.sd %></td>
+        <td><%= health_plan.tn %></td>
+        <td><%= health_plan.tx %></td>
+        <td><%= health_plan.ut %></td>
+        <td><%= health_plan.va %></td>
+        <td><%= health_plan.vt %></td>
+        <td><%= health_plan.wa %></td>
+        <td><%= health_plan.wi %></td>
+        <td><%= health_plan.wv %></td>
+        <td><%= health_plan.wy %></td>
+        <td><%= health_plan.pr %></td>
+        <td><%= health_plan.foreign %></td>
+        <td><%= link_to 'Show', health_plan %></td>
+        <td><%= link_to 'Edit', edit_health_plan_path(health_plan) %></td>
+        <td><%= link_to 'Destroy', health_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Health plan', new_health_plan_path %>

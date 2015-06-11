@@ -1,0 +1,185 @@
+<div class="container">
+  <div class="spinner">
+      <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container3">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+    </div>
+  <% if @user_selected_msa %> 
+    <div class="row">
+      <div class="col-md-3 well blue">  
+        <h4><%= @user_selected_msa %></h4>
+        <% if @msa_market_size.class == String %>
+          <p>Projected Market size: <%= @msa_market_size %></p>
+        <% else %>
+          <p>Projected Market size: <%= number_with_delimiter(@msa_market_size.round(0)) %></p>
+        <% end %>
+        <p>Total Number of Hospitals: <%= @hospital_count %></p>
+        <p>Total Number of Beds: <%= number_with_delimiter @beds_count %></p>
+      </div>
+    </div>
+    <div class="row">
+      <h3>
+        <span>Ranked Hospitals</span>
+        <span class="badge hospital-header-badge"><%= @hospitals_with_metrics.count %></span>
+      </h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Hospital</th>
+            <% if @beds_metric %>
+              <th>Staffed Beds</th>
+            <% end %>
+            <% if @discharges_metric %>
+              <th>Discharges</th>
+            <% end %>
+            <% if @copd_readmissions_metric %>
+              <th>COPD Readmissions</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+        <% @hospitals_with_metrics.first(@range).map {|h| h[0] }.each_with_index do |hospital,i| %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><%= link_to "#{hospital.name}", hospital %></td>
+            <% if @beds_metric %>
+              <td><%= hospital.hospital_bedsizes.first.staffed_beds %></td>
+            <% end %>
+            <% if @discharges_metric %>
+              <td><%= number_with_delimiter hospital.hospital_bedsizes.first.total_discharges %></td> 
+            <% end %>
+            <% if @copd_readmissions_metric %>
+              <td><%= hospital.copd_readmissions %></td> 
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row unranked-row">
+      <h3>
+        <span>Unranked Hospitals</span>
+        <span class="badge hospital-header-badge"><%= @unranked_hospitals.count %></span>
+        <a class="btn btn-primary btn-sm show-unranked-button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Show Hospitals</a>
+      </h3>
+      <div class="collapse" id="collapseExample">
+      </h3>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Hospital</th>
+              <% if @beds_metric %>
+                <th>Staffed Beds</th>
+              <% end %>
+              <% if @discharges_metric %>
+                <th>Discharges</th>
+              <% end %>
+              <% if @copd_readmissions_metric %>
+                <th>COPD Readmissions</th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+          <% @unranked_hospitals.map {|h| h[0] }.each_with_index do |hospital,i| %>
+            <% bedsize = hospital.hospital_bedsizes.first %>
+            <tr>
+              <td><%= link_to "#{hospital.name}", hospital %></td>
+              <% if @beds_metric %>
+                <td>
+                  <%= !bedsize.nil? ? bedsize.staffed_beds : "-" %>
+                </td>
+              <% end %>
+              <% if @discharges_metric %>
+                <td>
+                  <%= !bedsize.nil? ? number_with_delimiter(bedsize.total_discharges) : "-" %>
+                </td> 
+              <% end %>
+              <% if @copd_readmissions_metric %>
+                <td><%= hospital.copd_readmissions == 0 ? "-" : hospital.copd_readmissions %></td> 
+              <% end %>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>  
+    </div>
+  <% end %>
+  <% if @user_selected_hospital %>
+    <div class="row">
+      <h4><%= @inferred_msa %></h4>
+      <% if @msa_market_size.class == String %>
+        <p>Projected Market size: <%= @msa_market_size %></p>
+      <% else %>
+        <p>Projected Market size: <%= number_with_delimiter @msa_market_size.round(0) %></p>
+      <% end %>
+      <p>Total Number of Hospitals: <%= @hospital_count %></p>
+      <p>Total Number of Beds: <%= number_with_delimiter @beds_count %></p>
+    </div>
+    <div class="row">
+      <h3>Hospital Information</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Hospital</th>
+            <% if @beds_metric %>
+              <th>Staffed Beds</th>
+            <% end %>
+            <% if @discharges_metric %>
+              <th>Discharges</th>
+            <% end %>
+            <% if @copd_readmissions_metric %>
+              <th>COPD Readmissions</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= link_to "#{@hospital.name}", @hospital %></td>
+            <% if @beds_metric %>
+              <td><%= @hospital_beds %></td>
+            <% end %>
+            <% if @discharges_metric %>
+              <td><%= number_with_delimiter @discharges %></td>
+            <% end %>
+            <% if @copd_readmissions_metric %>
+              <td><%= @copd_readmissions %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+  <% end %>  
+</div>
+<%= javascript_tag do %>
+  window.msas = <%=raw @msas.to_json %>;
+  window.hospitals = <%=raw @hospitals.to_json %>;
+  $(function() {
+    $('.spinner').hide();
+    console.log("working");
+    $('.search-button').on("click", function() {
+      console.log('something');
+      $('.spinner').show();
+    });
+    $( "#tags" ).autocomplete({
+      source: msas
+    });
+    $( "#hospitals" ).autocomplete({
+      source: hospitals
+    });
+  });
+<% end %>

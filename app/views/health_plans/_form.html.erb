@@ -1,0 +1,309 @@
+<%= form_for(@health_plan) do |f| %>
+  <% if @health_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@health_plan.errors.count, "error") %> prohibited this health_plan from being saved:</h2>
+
+      <ul>
+      <% @health_plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mco_name %><br>
+    <%= f.text_field :mco_name %>
+  </div>
+  <div class="field">
+    <%= f.label :mco_id %><br>
+    <%= f.number_field :mco_id %>
+  </div>
+  <div class="field">
+    <%= f.label :mco_owner %><br>
+    <%= f.text_field :mco_owner %>
+  </div>
+  <div class="field">
+    <%= f.label :owner_id %><br>
+    <%= f.number_field :owner_id %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state_abbreviation %><br>
+    <%= f.text_field :state_abbreviation %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br>
+    <%= f.text_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :profit_status %><br>
+    <%= f.text_field :profit_status %>
+  </div>
+  <div class="field">
+    <%= f.label :private_public %><br>
+    <%= f.text_field :private_public %>
+  </div>
+  <div class="field">
+    <%= f.label :telephone_one %><br>
+    <%= f.text_field :telephone_one %>
+  </div>
+  <div class="field">
+    <%= f.label :telephone_two %><br>
+    <%= f.text_field :telephone_two %>
+  </div>
+  <div class="field">
+    <%= f.label :fax %><br>
+    <%= f.text_field :fax %>
+  </div>
+  <div class="field">
+    <%= f.label :contracted_pbm %><br>
+    <%= f.text_field :contracted_pbm %>
+  </div>
+  <div class="field">
+    <%= f.label :contracted_sp_vendor %><br>
+    <%= f.text_field :contracted_sp_vendor %>
+  </div>
+  <div class="field">
+    <%= f.label :service_areas %><br>
+    <%= f.text_field :service_areas %>
+  </div>
+  <div class="field">
+    <%= f.label :aliases %><br>
+    <%= f.text_field :aliases %>
+  </div>
+  <div class="field">
+    <%= f.label :provider_sponsored %><br>
+    <%= f.text_field :provider_sponsored %>
+  </div>
+  <div class="field">
+    <%= f.label :blues %><br>
+    <%= f.text_field :blues %>
+  </div>
+  <div class="field">
+    <%= f.label :al %><br>
+    <%= f.number_field :al %>
+  </div>
+  <div class="field">
+    <%= f.label :ak %><br>
+    <%= f.number_field :ak %>
+  </div>
+  <div class="field">
+    <%= f.label :ar %><br>
+    <%= f.number_field :ar %>
+  </div>
+  <div class="field">
+    <%= f.label :az %><br>
+    <%= f.number_field :az %>
+  </div>
+  <div class="field">
+    <%= f.label :ca %><br>
+    <%= f.number_field :ca %>
+  </div>
+  <div class="field">
+    <%= f.label :co %><br>
+    <%= f.number_field :co %>
+  </div>
+  <div class="field">
+    <%= f.label :ct %><br>
+    <%= f.number_field :ct %>
+  </div>
+  <div class="field">
+    <%= f.label :dc %><br>
+    <%= f.number_field :dc %>
+  </div>
+  <div class="field">
+    <%= f.label :de %><br>
+    <%= f.number_field :de %>
+  </div>
+  <div class="field">
+    <%= f.label :fl %><br>
+    <%= f.number_field :fl %>
+  </div>
+  <div class="field">
+    <%= f.label :ga %><br>
+    <%= f.number_field :ga %>
+  </div>
+  <div class="field">
+    <%= f.label :hi %><br>
+    <%= f.number_field :hi %>
+  </div>
+  <div class="field">
+    <%= f.label :ia %><br>
+    <%= f.number_field :ia %>
+  </div>
+  <div class="field">
+    <%= f.label :indiana %><br>
+    <%= f.number_field :indiana %>
+  </div>
+  <div class="field">
+    <%= f.label :il %><br>
+    <%= f.number_field :il %>
+  </div>
+  <div class="field">
+    <%= f.label :in %><br>
+    <%= f.number_field :in %>
+  </div>
+  <div class="field">
+    <%= f.label :ks %><br>
+    <%= f.number_field :ks %>
+  </div>
+  <div class="field">
+    <%= f.label :ky %><br>
+    <%= f.number_field :ky %>
+  </div>
+  <div class="field">
+    <%= f.label :la %><br>
+    <%= f.number_field :la %>
+  </div>
+  <div class="field">
+    <%= f.label :ma %><br>
+    <%= f.number_field :ma %>
+  </div>
+  <div class="field">
+    <%= f.label :me %><br>
+    <%= f.number_field :me %>
+  </div>
+  <div class="field">
+    <%= f.label :mi %><br>
+    <%= f.number_field :mi %>
+  </div>
+  <div class="field">
+    <%= f.label :md %><br>
+    <%= f.number_field :md %>
+  </div>
+  <div class="field">
+    <%= f.label :mn %><br>
+    <%= f.number_field :mn %>
+  </div>
+  <div class="field">
+    <%= f.label :ms %><br>
+    <%= f.number_field :ms %>
+  </div>
+  <div class="field">
+    <%= f.label :mo %><br>
+    <%= f.number_field :mo %>
+  </div>
+  <div class="field">
+    <%= f.label :mt %><br>
+    <%= f.number_field :mt %>
+  </div>
+  <div class="field">
+    <%= f.label :nc %><br>
+    <%= f.number_field :nc %>
+  </div>
+  <div class="field">
+    <%= f.label :nd %><br>
+    <%= f.number_field :nd %>
+  </div>
+  <div class="field">
+    <%= f.label :ne %><br>
+    <%= f.number_field :ne %>
+  </div>
+  <div class="field">
+    <%= f.label :nh %><br>
+    <%= f.number_field :nh %>
+  </div>
+  <div class="field">
+    <%= f.label :nj %><br>
+    <%= f.number_field :nj %>
+  </div>
+  <div class="field">
+    <%= f.label :nm %><br>
+    <%= f.number_field :nm %>
+  </div>
+  <div class="field">
+    <%= f.label :nv %><br>
+    <%= f.number_field :nv %>
+  </div>
+  <div class="field">
+    <%= f.label :ny %><br>
+    <%= f.number_field :ny %>
+  </div>
+  <div class="field">
+    <%= f.label :oh %><br>
+    <%= f.number_field :oh %>
+  </div>
+  <div class="field">
+    <%= f.label :ok %><br>
+    <%= f.number_field :ok %>
+  </div>
+  <div class="field">
+    <%= f.label :or %><br>
+    <%= f.number_field :or %>
+  </div>
+  <div class="field">
+    <%= f.label :pa %><br>
+    <%= f.number_field :pa %>
+  </div>
+  <div class="field">
+    <%= f.label :ri %><br>
+    <%= f.number_field :ri %>
+  </div>
+  <div class="field">
+    <%= f.label :sc %><br>
+    <%= f.number_field :sc %>
+  </div>
+  <div class="field">
+    <%= f.label :sd %><br>
+    <%= f.number_field :sd %>
+  </div>
+  <div class="field">
+    <%= f.label :tn %><br>
+    <%= f.number_field :tn %>
+  </div>
+  <div class="field">
+    <%= f.label :tx %><br>
+    <%= f.number_field :tx %>
+  </div>
+  <div class="field">
+    <%= f.label :ut %><br>
+    <%= f.number_field :ut %>
+  </div>
+  <div class="field">
+    <%= f.label :va %><br>
+    <%= f.number_field :va %>
+  </div>
+  <div class="field">
+    <%= f.label :vt %><br>
+    <%= f.number_field :vt %>
+  </div>
+  <div class="field">
+    <%= f.label :wa %><br>
+    <%= f.number_field :wa %>
+  </div>
+  <div class="field">
+    <%= f.label :wi %><br>
+    <%= f.number_field :wi %>
+  </div>
+  <div class="field">
+    <%= f.label :wv %><br>
+    <%= f.number_field :wv %>
+  </div>
+  <div class="field">
+    <%= f.label :wy %><br>
+    <%= f.number_field :wy %>
+  </div>
+  <div class="field">
+    <%= f.label :pr %><br>
+    <%= f.number_field :pr %>
+  </div>
+  <div class="field">
+    <%= f.label :foreign %><br>
+    <%= f.number_field :foreign %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
