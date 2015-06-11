@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  state: MyString
+  state_abbreviation: MyString
+  organization_name: MyString
+  enrolled: 1
+  total_state_ma_enrollment: 1
+  market_share_in_state: 1.5
+
+two:
+  state: MyString
+  state_abbreviation: MyString
+  organization_name: MyString
+  enrolled: 1
+  total_state_ma_enrollment: 1
+  market_share_in_state: 1.5

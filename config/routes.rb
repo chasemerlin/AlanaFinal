@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :medicare_advantages
+
   resources :snifs
 
   resources :fines

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Medicare Advantages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>State</th>
+      <th>State abbreviation</th>
+      <th>Organization name</th>
+      <th>Enrolled</th>
+      <th>Total state ma enrollment</th>
+      <th>Market share in state</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medicare_advantages.each do |medicare_advantage| %>
+      <tr>
+        <td><%= medicare_advantage.state %></td>
+        <td><%= medicare_advantage.state_abbreviation %></td>
+        <td><%= medicare_advantage.organization_name %></td>
+        <td><%= medicare_advantage.enrolled %></td>
+        <td><%= medicare_advantage.total_state_ma_enrollment %></td>
+        <td><%= medicare_advantage.market_share_in_state %></td>
+        <td><%= link_to 'Show', medicare_advantage %></td>
+        <td><%= link_to 'Edit', edit_medicare_advantage_path(medicare_advantage) %></td>
+        <td><%= link_to 'Destroy', medicare_advantage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Medicare advantage', new_medicare_advantage_path %>
