@@ -1,0 +1,137 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Rollup Parents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mco</th>
+      <th>Owner</th>
+      <th>Company</th>
+      <th>Al</th>
+      <th>Ak</th>
+      <th>Ar</th>
+      <th>Az</th>
+      <th>Ca</th>
+      <th>Co</th>
+      <th>Ct</th>
+      <th>Dc</th>
+      <th>De</th>
+      <th>Fl</th>
+      <th>Ga</th>
+      <th>Hi</th>
+      <th>Ia</th>
+      <th>Indiana</th>
+      <th>Il</th>
+      <th>In</th>
+      <th>Ks</th>
+      <th>Ky</th>
+      <th>La</th>
+      <th>Ma</th>
+      <th>Me</th>
+      <th>Mi</th>
+      <th>Md</th>
+      <th>Mn</th>
+      <th>Ms</th>
+      <th>Mo</th>
+      <th>Mt</th>
+      <th>Nc</th>
+      <th>Nd</th>
+      <th>Ne</th>
+      <th>Nh</th>
+      <th>Nj</th>
+      <th>Nm</th>
+      <th>Nv</th>
+      <th>Ny</th>
+      <th>Oh</th>
+      <th>Ok</th>
+      <th>Or</th>
+      <th>Pa</th>
+      <th>Ri</th>
+      <th>Sc</th>
+      <th>Sd</th>
+      <th>Tn</th>
+      <th>Tx</th>
+      <th>Ut</th>
+      <th>Va</th>
+      <th>Vt</th>
+      <th>Wa</th>
+      <th>Wi</th>
+      <th>Wv</th>
+      <th>Wy</th>
+      <th>Pr</th>
+      <th>Foreign</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rollup_parents.each do |rollup_parent| %>
+      <tr>
+        <td><%= rollup_parent.mco_id %></td>
+        <td><%= rollup_parent.owner_id %></td>
+        <td><%= rollup_parent.company %></td>
+        <td><%= rollup_parent.al %></td>
+        <td><%= rollup_parent.ak %></td>
+        <td><%= rollup_parent.ar %></td>
+        <td><%= rollup_parent.az %></td>
+        <td><%= rollup_parent.ca %></td>
+        <td><%= rollup_parent.co %></td>
+        <td><%= rollup_parent.ct %></td>
+        <td><%= rollup_parent.dc %></td>
+        <td><%= rollup_parent.de %></td>
+        <td><%= rollup_parent.fl %></td>
+        <td><%= rollup_parent.ga %></td>
+        <td><%= rollup_parent.hi %></td>
+        <td><%= rollup_parent.ia %></td>
+        <td><%= rollup_parent.indiana %></td>
+        <td><%= rollup_parent.il %></td>
+        <td><%= rollup_parent.in %></td>
+        <td><%= rollup_parent.ks %></td>
+        <td><%= rollup_parent.ky %></td>
+        <td><%= rollup_parent.la %></td>
+        <td><%= rollup_parent.ma %></td>
+        <td><%= rollup_parent.me %></td>
+        <td><%= rollup_parent.mi %></td>
+        <td><%= rollup_parent.md %></td>
+        <td><%= rollup_parent.mn %></td>
+        <td><%= rollup_parent.ms %></td>
+        <td><%= rollup_parent.mo %></td>
+        <td><%= rollup_parent.mt %></td>
+        <td><%= rollup_parent.nc %></td>
+        <td><%= rollup_parent.nd %></td>
+        <td><%= rollup_parent.ne %></td>
+        <td><%= rollup_parent.nh %></td>
+        <td><%= rollup_parent.nj %></td>
+        <td><%= rollup_parent.nm %></td>
+        <td><%= rollup_parent.nv %></td>
+        <td><%= rollup_parent.ny %></td>
+        <td><%= rollup_parent.oh %></td>
+        <td><%= rollup_parent.ok %></td>
+        <td><%= rollup_parent.or %></td>
+        <td><%= rollup_parent.pa %></td>
+        <td><%= rollup_parent.ri %></td>
+        <td><%= rollup_parent.sc %></td>
+        <td><%= rollup_parent.sd %></td>
+        <td><%= rollup_parent.tn %></td>
+        <td><%= rollup_parent.tx %></td>
+        <td><%= rollup_parent.ut %></td>
+        <td><%= rollup_parent.va %></td>
+        <td><%= rollup_parent.vt %></td>
+        <td><%= rollup_parent.wa %></td>
+        <td><%= rollup_parent.wi %></td>
+        <td><%= rollup_parent.wv %></td>
+        <td><%= rollup_parent.wy %></td>
+        <td><%= rollup_parent.pr %></td>
+        <td><%= rollup_parent.foreign %></td>
+        <td><%= link_to 'Show', rollup_parent %></td>
+        <td><%= link_to 'Edit', edit_rollup_parent_path(rollup_parent) %></td>
+        <td><%= link_to 'Destroy', rollup_parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rollup parent', new_rollup_parent_path %>

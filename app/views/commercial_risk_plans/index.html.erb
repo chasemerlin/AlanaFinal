@@ -1,0 +1,171 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Commercial Risk Plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mco name</th>
+      <th>Mco</th>
+      <th>Mco owner</th>
+      <th>Owner</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State abbreviation</th>
+      <th>Zip</th>
+      <th>Url</th>
+      <th>Profit status</th>
+      <th>Private public</th>
+      <th>Telephone one</th>
+      <th>Telephone two</th>
+      <th>Fax</th>
+      <th>Contracted pbm</th>
+      <th>Contracted sp vendor</th>
+      <th>Service areas</th>
+      <th>Aliases</th>
+      <th>Provider sponsored</th>
+      <th>Blues</th>
+      <th>Al</th>
+      <th>Ak</th>
+      <th>Ar</th>
+      <th>Az</th>
+      <th>Ca</th>
+      <th>Co</th>
+      <th>Ct</th>
+      <th>Dc</th>
+      <th>De</th>
+      <th>Fl</th>
+      <th>Ga</th>
+      <th>Hi</th>
+      <th>Ia</th>
+      <th>Indiana</th>
+      <th>Il</th>
+      <th>In</th>
+      <th>Ks</th>
+      <th>Ky</th>
+      <th>La</th>
+      <th>Ma</th>
+      <th>Me</th>
+      <th>Mi</th>
+      <th>Md</th>
+      <th>Mn</th>
+      <th>Ms</th>
+      <th>Mo</th>
+      <th>Mt</th>
+      <th>Nc</th>
+      <th>Nd</th>
+      <th>Ne</th>
+      <th>Nh</th>
+      <th>Nj</th>
+      <th>Nm</th>
+      <th>Nv</th>
+      <th>Ny</th>
+      <th>Oh</th>
+      <th>Ok</th>
+      <th>Or</th>
+      <th>Pa</th>
+      <th>Ri</th>
+      <th>Sc</th>
+      <th>Sd</th>
+      <th>Tn</th>
+      <th>Tx</th>
+      <th>Ut</th>
+      <th>Va</th>
+      <th>Vt</th>
+      <th>Wa</th>
+      <th>Wi</th>
+      <th>Wv</th>
+      <th>Wy</th>
+      <th>Pr</th>
+      <th>Foreign</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @commercial_risk_plans.each do |commercial_risk_plan| %>
+      <tr>
+        <td><%= commercial_risk_plan.mco_name %></td>
+        <td><%= commercial_risk_plan.mco_id %></td>
+        <td><%= commercial_risk_plan.mco_owner %></td>
+        <td><%= commercial_risk_plan.owner_id %></td>
+        <td><%= commercial_risk_plan.address %></td>
+        <td><%= commercial_risk_plan.city %></td>
+        <td><%= commercial_risk_plan.state_abbreviation %></td>
+        <td><%= commercial_risk_plan.zip %></td>
+        <td><%= commercial_risk_plan.url %></td>
+        <td><%= commercial_risk_plan.profit_status %></td>
+        <td><%= commercial_risk_plan.private_public %></td>
+        <td><%= commercial_risk_plan.telephone_one %></td>
+        <td><%= commercial_risk_plan.telephone_two %></td>
+        <td><%= commercial_risk_plan.fax %></td>
+        <td><%= commercial_risk_plan.contracted_pbm %></td>
+        <td><%= commercial_risk_plan.contracted_sp_vendor %></td>
+        <td><%= commercial_risk_plan.service_areas %></td>
+        <td><%= commercial_risk_plan.aliases %></td>
+        <td><%= commercial_risk_plan.provider_sponsored %></td>
+        <td><%= commercial_risk_plan.blues %></td>
+        <td><%= commercial_risk_plan.al %></td>
+        <td><%= commercial_risk_plan.ak %></td>
+        <td><%= commercial_risk_plan.ar %></td>
+        <td><%= commercial_risk_plan.az %></td>
+        <td><%= commercial_risk_plan.ca %></td>
+        <td><%= commercial_risk_plan.co %></td>
+        <td><%= commercial_risk_plan.ct %></td>
+        <td><%= commercial_risk_plan.dc %></td>
+        <td><%= commercial_risk_plan.de %></td>
+        <td><%= commercial_risk_plan.fl %></td>
+        <td><%= commercial_risk_plan.ga %></td>
+        <td><%= commercial_risk_plan.hi %></td>
+        <td><%= commercial_risk_plan.ia %></td>
+        <td><%= commercial_risk_plan.indiana %></td>
+        <td><%= commercial_risk_plan.il %></td>
+        <td><%= commercial_risk_plan.in %></td>
+        <td><%= commercial_risk_plan.ks %></td>
+        <td><%= commercial_risk_plan.ky %></td>
+        <td><%= commercial_risk_plan.la %></td>
+        <td><%= commercial_risk_plan.ma %></td>
+        <td><%= commercial_risk_plan.me %></td>
+        <td><%= commercial_risk_plan.mi %></td>
+        <td><%= commercial_risk_plan.md %></td>
+        <td><%= commercial_risk_plan.mn %></td>
+        <td><%= commercial_risk_plan.ms %></td>
+        <td><%= commercial_risk_plan.mo %></td>
+        <td><%= commercial_risk_plan.mt %></td>
+        <td><%= commercial_risk_plan.nc %></td>
+        <td><%= commercial_risk_plan.nd %></td>
+        <td><%= commercial_risk_plan.ne %></td>
+        <td><%= commercial_risk_plan.nh %></td>
+        <td><%= commercial_risk_plan.nj %></td>
+        <td><%= commercial_risk_plan.nm %></td>
+        <td><%= commercial_risk_plan.nv %></td>
+        <td><%= commercial_risk_plan.ny %></td>
+        <td><%= commercial_risk_plan.oh %></td>
+        <td><%= commercial_risk_plan.ok %></td>
+        <td><%= commercial_risk_plan.or %></td>
+        <td><%= commercial_risk_plan.pa %></td>
+        <td><%= commercial_risk_plan.ri %></td>
+        <td><%= commercial_risk_plan.sc %></td>
+        <td><%= commercial_risk_plan.sd %></td>
+        <td><%= commercial_risk_plan.tn %></td>
+        <td><%= commercial_risk_plan.tx %></td>
+        <td><%= commercial_risk_plan.ut %></td>
+        <td><%= commercial_risk_plan.va %></td>
+        <td><%= commercial_risk_plan.vt %></td>
+        <td><%= commercial_risk_plan.wa %></td>
+        <td><%= commercial_risk_plan.wi %></td>
+        <td><%= commercial_risk_plan.wv %></td>
+        <td><%= commercial_risk_plan.wy %></td>
+        <td><%= commercial_risk_plan.pr %></td>
+        <td><%= commercial_risk_plan.foreign %></td>
+        <td><%= link_to 'Show', commercial_risk_plan %></td>
+        <td><%= link_to 'Edit', edit_commercial_risk_plan_path(commercial_risk_plan) %></td>
+        <td><%= link_to 'Destroy', commercial_risk_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Commercial risk plan', new_commercial_risk_plan_path %>

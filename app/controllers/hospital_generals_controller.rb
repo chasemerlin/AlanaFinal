@@ -15,6 +15,9 @@ class HospitalGeneralsController < ApplicationController
     zip = ZipMsa.where(zip_code: h.zip).first
     zips_in_msa = ZipMsa.where(msa_name: zip.msa_name).map {|record| record.zip_code}
     @snifs = Snif.where("zipcode IN (?)", zips_in_msa)
+    # get top Health Plans
+    @state = h.state
+    @health_plans = HealthPlan.all.select {|plan| !plan.total_in_state(@state).nil?}.sort_by {|plan| plan.total_in_state(@state)}.reverse.first(5)
   end
 
   # GET /hospital_generals/new

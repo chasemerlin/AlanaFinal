@@ -1,0 +1,2 @@
+module CommercialRiskPlansHelper
+end

@@ -1,0 +1,2 @@
+module MedicaidPlansHelper
+end

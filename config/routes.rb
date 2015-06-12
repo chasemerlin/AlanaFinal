@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :rollup_parents
+
+  resources :medicaid_plans
+
+  resources :medicare_plans
+
+  resources :commercial_risk_plans
+
   resources :health_plans
 
   resources :medicare_advantages
