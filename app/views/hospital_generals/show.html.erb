@@ -1,152 +1,222 @@
 <p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%= @hospital_general.name %></h1>
+</div>
+<div class="hospital-info well">
+  <h3>
+    Summary Report
+    <small><span class="glyphicon glyphicon-list-alt"></span></small>
+  </h3>
+  <p>
+    <%= @hospital_general.address %> <%= @hospital_general.city %>, <%= @hospital_general.state %> <%= @hospital_general.zip %>
+  </p>
+  <p>
+    <%= number_to_phone(@hospital_general.phone) %>
+  </p>
+  <% bedsize = @hospital_general.hospital_bedsizes.first %>
+  <% staffed_beds = bedsize.staffed_beds if bedsize %>
+  <% discharges = bedsize.total_discharges if bedsize %>
+  <% copd_readmissions = @hospital_general.copd_readmissions %>
+  <p>
+    <strong>Staffed Beds:</strong>
+    <%= !staffed_beds.nil? ? staffed_beds : "N/A" %>
+  </p>
+  <p>
+    <strong>Discharges:</strong>
+    <%= !discharges.nil? ? number_with_delimiter(discharges) : "N/A" %>
+  </p>
+  <p>
+    <strong>COPD Readmissions:</strong>
+    <%= !(copd_readmissions == 0) ? copd_readmissions : "N/A" %>
+  </p>
+  <p>
+    <strong>Fines:</strong>
+    $<%= number_with_delimiter @hospital_general.total_fines.round(0) %>
+  </p>
+</div>
 
-<p>
-  <strong>Provider:</strong>
-  <%= @hospital_general.provider_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @hospital_general.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @hospital_general.address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @hospital_general.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @hospital_general.state %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @hospital_general.zip %>
-</p>
-
-<p>
-  <strong>County:</strong>
-  <%= @hospital_general.county %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= number_to_phone(@hospital_general.phone) %>
-</p>
-
-<p>
-  <strong>Hospital Type:</strong>
-  <%= @hospital_general.hospital_type %>
-</p>
-
-<p>
-  <strong>Ownership:</strong>
-  <%= @hospital_general.ownership %>
-</p>
-
-<p>
-  <strong>Emergency:</strong>
-  <%= @hospital_general.emergency %>
-</p>
-
-<% bedsize = @hospital_general.hospital_bedsizes.first %>
-<% staffed_beds = bedsize.staffed_beds if bedsize %>
-<% discharges = bedsize.total_discharges if bedsize %>
-<% copd_readmissions = @hospital_general.copd_readmissions %>
-
-<p>
-  <strong>Staffed Beds:</strong>
-  <%= !staffed_beds.nil? ? staffed_beds : "N/A" %>
-</p>
-
-<p>
-  <strong>Discharges:</strong>
-  <%= !discharges.nil? ? number_with_delimiter(discharges) : "N/A" %>
-</p>
-
-<p>
-  <strong>COPD Readmissions:</strong>
-  <%= !(copd_readmissions == 0) ? copd_readmissions : "N/A" %>
-</p>
-
-<p>
-  <strong>Fines:</strong>
-  $<%= number_with_delimiter @hospital_general.total_fines.round(0) %>
-</p>
-
-<h1>Nearby Snifs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone number</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zipcode</th>
-      <th>Mcr rating</th>
-      <th>Beds capacity</th>
-      <th>Medicare</th>
-      <th>Medicaid</th>
-      <th>Percentage occupied</th>
-      <th>Population</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @snifs.each do |snif| %>
+<div class="snfs-info well">
+  <h3 class="col-md-3">Top Nearby SNFs <small><span class="glyphicon glyphicon-home"></span></small></h3>
+  <div class="snf-star-ratings col-md-2 col-md-offset-7">
+    <p>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <%= @five_star_count %>
+    </p>
+    <p>
+      <span class="glyphicon glyphicon-star glyphicon-hidden"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <%= @four_star_count %>
+    </p>
+    <p>
+      <span class="glyphicon glyphicon-star glyphicon-hidden"></span>
+      <span class="glyphicon glyphicon-star glyphicon-hidden"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <%= @three_star_count %>
+    </p>
+  </div>
+  <table class='table table-striped snfs-table'>
+    <thead>
       <tr>
-        <td><%= snif.name %></td>
-        <td><%= snif.phone_number %></td>
-        <td><%= snif.address %></td>
-        <td><%= snif.city %></td>
-        <td><%= snif.state %></td>
-        <td><%= snif.zipcode %></td>
-        <td><%= snif.mcr_rating %></td>
-        <td><%= snif.beds_capacity %></td>
-        <td><%= snif.medicare %></td>
-        <td><%= snif.medicaid %></td>
-        <td><%= snif.percentage_occupied %></td>
-        <td><%= snif.population %></td>
-        <td><%= link_to 'Show', snif %></td>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>MCR Rating</th>
+        <th>Beds</th>
+        <th>Medicare</th>
+        <th>Medicaid</th>
+        <th>% Occupied</th>
+        <th>Population</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @snifs.each do |snif| %>
+        <tr>
+          <td><%= snif.name %></td>
+          <td><%= snif.phone_number %></td>
+          <td><%= snif.city %></td>
+          <td><%= snif.mcr_rating %></td>
+          <td><%= snif.beds_capacity %></td>
+          <td><%= snif.medicare %></td>
+          <td><%= snif.medicaid %></td>
+          <td><%= snif.percentage_occupied %></td>
+          <td><%= snif.population %></td>
+          <td><%= link_to 'Show', snif %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>  
 
-<h1>Top Health Plans</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Mco name</th>
-      <th>Mco owner</th>
-      <th>Service areas</th>
-      <th>Aliases</th>
-      <th>Populatin in <%= @state %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @health_plans.each do |health_plan| %>
+<div class="health-plans-info well">
+  <h4>Top Health Plans</h4>
+  <table class='table table-striped snfs-table'>
+    <thead>
       <tr>
-        <td><%= health_plan.mco_name %></td>
-        <td><%= health_plan.mco_owner %></td>
-        <td><%= health_plan.service_areas %></td>
-        <td><%= health_plan.aliases %></td>
-        <td><%= health_plan.total_in_state(@state) %>
+        <th>Mco name</th>
+        <th>Service areas</th>
+        <th>Aliases</th>
+        <th>Population in <%= @state %></th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @health_plans.each do |health_plan| %>
+        <tr>
+          <td><%= health_plan.mco_name %></td>
+          <td><%= health_plan.service_areas %></td>
+          <td><%= health_plan.aliases %></td>
+          <td><%= health_plan.total_in_state(@state) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="commercial-plans-info well">
+  <h4>Top Commercial Risk Plans</h4>
+  <table class='table table-striped snfs-table'>
+    <thead>
+      <tr>
+        <th>Mco name</th>
+        <th>Service areas</th>
+        <th>Aliases</th>
+        <th>Population in <%= @state %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @commercial_plans.each do |commercial_plan| %>
+        <tr>
+          <td><%= commercial_plan.mco_name %></td>
+          <td><%= commercial_plan.service_areas %></td>
+          <td><%= commercial_plan.aliases %></td>
+          <td><%= commercial_plan.total_in_state(@state) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="medicare-plans-info well">
+  <h4>Top Medicare Plans</h4>
+  <table class='table table-striped snfs-table'>
+    <thead>
+      <tr>
+        <th>Mco name</th>
+        <th>Service areas</th>
+        <th>Aliases</th>
+        <th>Population in <%= @state %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @medicare_plans.each do |health_plan| %>
+        <tr>
+          <td><%= health_plan.mco_name %></td>
+          <td><%= health_plan.service_areas %></td>
+          <td><%= health_plan.aliases %></td>
+          <td><%= health_plan.total_in_state(@state) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="medicaid-plans-info well">
+  <h4>Top Medicaid Plans</h4>
+  <table class='table table-striped snfs-table'>
+    <thead>
+      <tr>
+        <th>Mco name</th>
+        <th>Service areas</th>
+        <th>Aliases</th>
+        <th>Population in <%= @state %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @medicaid_plans.each do |health_plan| %>
+        <tr>
+          <td><%= health_plan.mco_name %></td>
+          <td><%= health_plan.service_areas %></td>
+          <td><%= health_plan.aliases %></td>
+          <td><%= health_plan.total_in_state(@state) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="medicare-advantage-plans-info well">
+  <h4>Top Medicare Advantage Plans</h4>
+  <table class='table table-striped snfs-table'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Enrolled in <%= @state %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @med_adv_plans.each do |health_plan| %>
+        <tr>
+          <td><%= health_plan.organization_name %></td>
+          <td><%= health_plan.enrolled %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 
 

@@ -15,9 +15,17 @@ class HospitalGeneralsController < ApplicationController
     zip = ZipMsa.where(zip_code: h.zip).first
     zips_in_msa = ZipMsa.where(msa_name: zip.msa_name).map {|record| record.zip_code}
     @snifs = Snif.where("zipcode IN (?)", zips_in_msa)
-    # get top Health Plans
+    @five_star_count = @snifs.where(mcr_rating: 5).count
+    @four_star_count = @snifs.where(mcr_rating: 4).count
+    @three_star_count = @snifs.where(mcr_rating: 3).count
+    @snifs = @snifs.order('beds_capacity DESC').first(10)
+    # get top payers in state
     @state = h.state
-    @health_plans = HealthPlan.all.select {|plan| !plan.total_in_state(@state).nil?}.sort_by {|plan| plan.total_in_state(@state)}.reverse.first(5)
+    @health_plans = HealthPlan.top_plans(@state, 5)
+    @commercial_plans = CommercialRiskPlan.top_plans(@state, 5)
+    @medicare_plans = MedicarePlan.top_plans(@state, 5)
+    @medicaid_plans = MedicaidPlan.top_plans(@state, 5)
+    @med_adv_plans = MedicareAdvantage.where(state_abbreviation: @state).order('enrolled DESC').first(5)
   end
 
   # GET /hospital_generals/new
