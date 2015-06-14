@@ -1,0 +1,31 @@
+<%= form_tag(results_search_path, method: 'post', class:'master-search-form') do %>
+  <div class="ui-widget form-group">
+    <label for="hospitals" class="">Hospital</label>
+    <input id="hospitals" name="hospitals" class="hospital-input form-control" placeholder="Search by Hospital">
+  </div>
+  <p class="search-form-divider">OR</p>
+  <div class="ui-widget form-group">
+    <label for="tags" class="">MSA</label>
+    <input id="tags" name="tags" class="msa-input form-control" placeholder="Search by MSA">
+  </div>
+  <br>
+  <div class="">
+    <%= check_box_tag(:staffed_beds, 1, params[:remember_beds]) %>
+    <%= label_tag(:staffed_beds, "Staffed Beds", class: "checkbox-label") %>
+    <%= check_box_tag(:discharges, 1, params[:remember_discharges]) %>
+    <%= label_tag(:discharges, "Discharges", class: "checkbox-label") %>
+    <%= check_box_tag(:copd_readmissions, 1, params[:remember_readmissions]) %>
+    <%= label_tag(:copd_readmissions, "COPD Readmissions", class: "checkbox-label") %>
+    <p class="help-block">Criteria for your search.</p>
+  </div>
+  <br>
+  <select name="range" id="range" class="form-control search-range">
+    <option value="5">Top 5</option>
+    <option value="10">Top 10</option>
+    <option value="15">Top 15</option>
+  </select>
+  <div class="form-group search-button-form">
+    <%= submit_tag "Search", class: "btn btn-primary search-button" %>
+    <i class="fa-li fa fa-spinner fa-spin"></i>
+  </div>
+<% end %>

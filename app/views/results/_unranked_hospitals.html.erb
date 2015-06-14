@@ -1,0 +1,44 @@
+<h3>
+  <span>Unranked Hospitals</span>
+  <span class="badge hospital-header-badge"><%= @unranked_hospitals.count %></span>
+  <a class="btn btn-primary btn-sm show-unranked-button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Show Hospitals</a>
+</h3>
+<div class="collapse" id="collapseExample">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Hospital <span class='glyphicon glyphicon-sort'></span></th>
+        <% if @beds_metric %>
+          <th>Staffed Beds <span class='glyphicon glyphicon-sort'></span></th>
+        <% end %>
+        <% if @discharges_metric %>
+          <th>Discharges <span class='glyphicon glyphicon-sort'></span></th>
+        <% end %>
+        <% if @copd_readmissions_metric %>
+          <th>COPD Readmissions <span class='glyphicon glyphicon-sort'></span></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+    <% @unranked_hospitals.map {|h| h[0] }.each_with_index do |hospital,i| %>
+      <% bedsize = hospital.hospital_bedsizes.first %>
+      <tr>
+        <td><%= link_to "#{hospital.name}", hospital %></td>
+        <% if @beds_metric %>
+          <td>
+            <%= !bedsize.nil? ? bedsize.staffed_beds : "-" %>
+          </td>
+        <% end %>
+        <% if @discharges_metric %>
+          <td>
+            <%= !bedsize.nil? ? number_with_delimiter(bedsize.total_discharges) : "-" %>
+          </td> 
+        <% end %>
+        <% if @copd_readmissions_metric %>
+          <td><%= hospital.copd_readmissions == 0 ? "-" : hospital.copd_readmissions %></td> 
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>  
