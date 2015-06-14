@@ -7,32 +7,51 @@
     Summary Report
     <small><span class="glyphicon glyphicon-list-alt"></span></small>
   </h3>
-  <p>
-    <%= @hospital_general.address %> <%= @hospital_general.city %>, <%= @hospital_general.state %> <%= @hospital_general.zip %>
-  </p>
-  <p>
-    <%= number_to_phone(@hospital_general.phone) %>
-  </p>
-  <% bedsize = @hospital_general.hospital_bedsizes.first %>
-  <% staffed_beds = bedsize.staffed_beds if bedsize %>
-  <% discharges = bedsize.total_discharges if bedsize %>
-  <% copd_readmissions = @hospital_general.copd_readmissions %>
-  <p>
-    <strong>Staffed Beds:</strong>
-    <%= !staffed_beds.nil? ? staffed_beds : "N/A" %>
-  </p>
-  <p>
-    <strong>Discharges:</strong>
-    <%= !discharges.nil? ? number_with_delimiter(discharges) : "N/A" %>
-  </p>
-  <p>
-    <strong>COPD Readmissions:</strong>
-    <%= !(copd_readmissions == 0) ? copd_readmissions : "N/A" %>
-  </p>
-  <p>
-    <strong>Fines:</strong>
-    $<%= number_with_delimiter @hospital_general.total_fines.round(0) %>
-  </p>
+  <div class="row">
+    <div class="hospital-metrics-info col-md-4">
+      <h4>Hospital Info</h4>
+      <p>
+        <%= @hospital_general.address %> <%= @hospital_general.city %>, <%= @hospital_general.state %> <%= @hospital_general.zip %>
+      </p>
+      <p>
+        <%= number_to_phone(@hospital_general.phone) %>
+      </p>
+      <% bedsize = @hospital_general.hospital_bedsizes.first %>
+      <% staffed_beds = bedsize.staffed_beds if bedsize %>
+      <% discharges = bedsize.total_discharges if bedsize %>
+      <% copd_readmissions = @hospital_general.copd_readmissions %>
+      <p>
+        <strong>Staffed Beds:</strong>
+        <%= !staffed_beds.nil? ? staffed_beds : "N/A" %>
+      </p>
+      <p>
+        <strong>Discharges:</strong>
+        <%= !discharges.nil? ? number_with_delimiter(discharges) : "N/A" %>
+      </p>
+      <p>
+        <strong>COPD Readmissions:</strong>
+        <%= !(copd_readmissions == 0) ? copd_readmissions : "N/A" %>
+      </p>
+    </div>  
+    <div class="hospital-fines-detail col-md-8">
+      <h4>Fines Detail</h4>
+      <div class="row">
+        <div class="col-md-4"> 
+          <p>Aggregate Excess Readmissions $<%= @hospital_general.excess_readmissions.round(0) %></p>
+          <p>- COPD Amount: $<%= @hospital_general.fine.copd_amount.round(0) %></p>
+          <p>- AMI Amount: $<%= @hospital_general.fine.ami_amount.round(0) %></p>
+          <p>- Pneumonia Amount: $<%= @hospital_general.fine.pneumonia_amount.round(0) %></p>
+          <p>- Hip Knee Amount: $<%= @hospital_general.fine.hip_knee_amount.round(0) %></p>
+          <p>- HF Amount: $<%= @hospital_general.fine.hf_amount.round(0) %></p>
+        </div>
+        <div class="col-md-6"> 
+        <p>Aggregate $ for All Discharge: $<%= @hospital_general.aggregate_payments %></p>
+        <p>Readjustment Factor: <%= @hospital_general.readjustment_factor.round(3) %></p>
+        <p><strong>Total Fines:</strong> $<%= number_with_delimiter @hospital_general.total_fines.round(0) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="snfs-info well">

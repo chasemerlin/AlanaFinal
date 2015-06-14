@@ -3,6 +3,10 @@ class HospitalGeneral < ActiveRecord::Base
   has_many :hospital_readmissions, primary_key: :name, foreign_key: :hospital_name
   has_many :fines, primary_key: :name, foreign_key: :hospital_name
 
+  def fine
+    fines.first
+  end
+
   def copd_readmissions
     if hospital_readmissions
       re = hospital_readmissions.where(measure_id:"READM_30_COPD").first
@@ -17,17 +21,24 @@ class HospitalGeneral < ActiveRecord::Base
     end
   end
 
-  def total_fines
-    record = fines.first
-    total_excess_readmissions = record.copd_amount + record.ami_amount + record.pneumonia_amount +
-                                record.hip_knee_amount + record.hf_amount
-    total_payments = record.total_payments
-    overall_ratio = 1 - (total_excess_readmissions/total_payments)
+  def excess_readmissions
+    total = fine.copd_amount + fine.ami_amount + fine.pneumonia_amount + fine.hip_knee_amount + fine.hf_amount
+  end
+
+  def aggregate_payments
+    fine.total_payments
+  end
+
+  def readjustment_factor
+    overall_ratio = 1 - (excess_readmissions/aggregate_payments)
     if overall_ratio < 0.97
-      readjustment_factor = 0.03
+      0.03
     else
-      readjustment_factor = 1 - overall_ratio
+      1 - overall_ratio
     end
-    final_fine = readjustment_factor * total_payments
+  end
+
+  def total_fines
+    final_fine = readjustment_factor * aggregate_payments
   end
 end
