@@ -75,16 +75,16 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>Rank</th>
-            <th>Hospital</th>
+            <th>Rank <span class='glyphicon glyphicon-sort'></span></th>
+            <th>Hospital <span class='glyphicon glyphicon-sort'></span></th>
             <% if @beds_metric %>
-              <th>Staffed Beds</th>
+              <th>Staffed Beds <span class='glyphicon glyphicon-sort'></span></th>
             <% end %>
             <% if @discharges_metric %>
-              <th>Discharges</th>
+              <th>Discharges <span class='glyphicon glyphicon-sort'></span></th>
             <% end %>
             <% if @copd_readmissions_metric %>
-              <th>COPD Readmissions</th>
+              <th>COPD Readmissions <span class='glyphicon glyphicon-sort'></span></th>
             <% end %>
           </tr>
         </thead>
@@ -118,15 +118,15 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>Hospital</th>
+              <th>Hospital <span class='glyphicon glyphicon-sort'></span></th>
               <% if @beds_metric %>
-                <th>Staffed Beds</th>
+                <th>Staffed Beds <span class='glyphicon glyphicon-sort'></span></th>
               <% end %>
               <% if @discharges_metric %>
-                <th>Discharges</th>
+                <th>Discharges <span class='glyphicon glyphicon-sort'></span></th>
               <% end %>
               <% if @copd_readmissions_metric %>
-                <th>COPD Readmissions</th>
+                <th>COPD Readmissions <span class='glyphicon glyphicon-sort'></span></th>
               <% end %>
             </tr>
           </thead>
@@ -171,15 +171,15 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>Hospital</th>
+            <th>Hospital <span class='glyphicon glyphicon-sort'></span></th>
             <% if @beds_metric %>
-              <th>Staffed Beds</th>
+              <th>Staffed Beds <span class='glyphicon glyphicon-sort'></span></th>
             <% end %>
             <% if @discharges_metric %>
-              <th>Discharges</th>
+              <th>Discharges <span class='glyphicon glyphicon-sort'></span></th>
             <% end %>
             <% if @copd_readmissions_metric %>
-              <th>COPD Readmissions</th>
+              <th>COPD Readmissions <span class='glyphicon glyphicon-sort'></span></th>
             <% end %>
           </tr>
         </thead>
@@ -216,5 +216,6 @@
     $( "#hospitals" ).autocomplete({
       source: hospitals
     });
+    $("table").tablesorter();
   });
 <% end %>
