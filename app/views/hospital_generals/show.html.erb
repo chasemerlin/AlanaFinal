@@ -37,7 +37,7 @@
       <h4>Fines Detail</h4>
       <div class="row">
         <div class="col-md-4"> 
-          <p>Aggregate Excess Readmissions $<%= @hospital_general.excess_readmissions.round(0) %></p>
+          <p>Aggregate Excess Readmissions $<%= excess_readmissions_status(@hospital_general) %></p>
           <p>- COPD Amount: $<%= @hospital_general.fine.copd_amount.round(0) %></p>
           <p>- AMI Amount: $<%= @hospital_general.fine.ami_amount.round(0) %></p>
           <p>- Pneumonia Amount: $<%= @hospital_general.fine.pneumonia_amount.round(0) %></p>
