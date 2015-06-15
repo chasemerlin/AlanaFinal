@@ -1,0 +1,38 @@
+<h3>
+  <span>Ranked Hospitals</span>
+  <span class="badge hospital-header-badge"><%= @hospitals_with_metrics.count %></span>
+</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Rank <span class='glyphicon glyphicon-sort'></span></th>
+      <th>Hospital <span class='glyphicon glyphicon-sort'></span></th>
+      <% if @beds_metric %>
+        <th>Staffed Beds <span class='glyphicon glyphicon-sort'></span></th>
+      <% end %>
+      <% if @discharges_metric %>
+        <th>Discharges <span class='glyphicon glyphicon-sort'></span></th>
+      <% end %>
+      <% if @copd_readmissions_metric %>
+        <th>COPD Readmissions <span class='glyphicon glyphicon-sort'></span></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+  <% @hospitals_with_metrics.first(@range).map {|h| h[0] }.each_with_index do |hospital,i| %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= link_to "#{hospital.name}", hospital %></td>
+      <% if @beds_metric %>
+        <td><%= hospital.hospital_bedsizes.first.staffed_beds %></td>
+      <% end %>
+      <% if @discharges_metric %>
+        <td><%= number_with_delimiter hospital.hospital_bedsizes.first.total_discharges %></td> 
+      <% end %>
+      <% if @copd_readmissions_metric %>
+        <td><%= hospital.copd_readmissions %></td> 
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

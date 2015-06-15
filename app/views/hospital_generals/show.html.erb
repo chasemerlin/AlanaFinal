@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="page-header">
-  <h1><%= @hospital_general.name %></h1>
+  <h1><%= @hospital_general.name %> <%= link_to 'Back', 'javascript:history.go(-1);', class:'btn btn-success back-button' %></h1>
 </div>
 <div class="hospital-info well">
   <h3>
@@ -34,7 +34,7 @@
       </p>
     </div>  
     <div class="hospital-fines-detail col-md-8">
-      <h4>Fines Detail</h4>
+      <h4>Fine Detail</h4>
       <div class="row">
         <div class="col-md-4"> 
           <p>Aggregate Excess Readmissions $<%= excess_readmissions_status(@hospital_general) %></p>
@@ -236,6 +236,8 @@
     </tbody>
   </table>
 </div>
+
+<%= link_to 'Back', 'javascript:history.go(-1);', class:'btn btn-success back-button' %>
 
 <%= javascript_tag do %>
   $(function() {

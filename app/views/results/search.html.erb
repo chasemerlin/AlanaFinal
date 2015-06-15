@@ -1,2 +1,82 @@
-<h1>Results#search</h1>
-<p>Find me in app/views/results/search.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 well">
+      <%= render 'form' %>
+    </div>
+  </div>
+  <%= render 'loading_spinner' %>
+  <% if @user_selected_msa %> 
+    <div class="row">
+      <%= render 'msa_info' %>
+    </div>
+    <div class="row">
+      <%= render 'ranked_hospitals' %>
+    </div>
+    <div class="row unranked-row">
+      <%= render 'unranked_hospitals' %>
+    </div>
+  <% end %>
+  <% if @user_selected_hospital %>
+    <div class="row">
+      <h4><%= @inferred_msa %></h4>
+      <% if @msa_market_size.class == String %>
+        <p>Projected Market size: <%= @msa_market_size %></p>
+      <% else %>
+        <p>Projected Market size: <%= number_with_delimiter @msa_market_size.round(0) %></p>
+      <% end %>
+      <p>Total Number of Hospitals: <%= @hospital_count %></p>
+      <p>Total Number of Beds: <%= number_with_delimiter @beds_count %></p>
+    </div>
+    <div class="row">
+      <h3>Hospital Information</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Hospital <span class='glyphicon glyphicon-sort'></span></th>
+            <% if @beds_metric %>
+              <th>Staffed Beds <span class='glyphicon glyphicon-sort'></span></th>
+            <% end %>
+            <% if @discharges_metric %>
+              <th>Discharges <span class='glyphicon glyphicon-sort'></span></th>
+            <% end %>
+            <% if @copd_readmissions_metric %>
+              <th>COPD Readmissions <span class='glyphicon glyphicon-sort'></span></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= link_to "#{@hospital.name}", @hospital %></td>
+            <% if @beds_metric %>
+              <td><%= @hospital_beds %></td>
+            <% end %>
+            <% if @discharges_metric %>
+              <td><%= number_with_delimiter @discharges %></td>
+            <% end %>
+            <% if @copd_readmissions_metric %>
+              <td><%= @copd_readmissions %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+  <% end %>  
+</div>
+<%= javascript_tag do %>
+  window.msas = <%=raw @msas.to_json %>;
+  window.hospitals = <%=raw @hospitals.to_json %>;
+  $(function() {
+    $('.spinner').hide();
+    console.log("working");
+    $('.search-button').on("click", function() {
+      console.log('something');
+      $('.spinner').show();
+    });
+    $( "#tags" ).autocomplete({
+      source: msas
+    });
+    $( "#hospitals" ).autocomplete({
+      source: hospitals
+    });
+    $("table").tablesorter();
+  });
+<% end %>
